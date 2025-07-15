@@ -1,4 +1,158 @@
 ## ------------------------------Bitwise Programs-----------------------------
+
+### 01. Check given number is even or odd   
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+ * 01.write a c program to check given number is even or odd *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+
+int main(void)
+{
+    int num,bit;
+    printf("Enter Number:");
+    scanf("%d",&num);
+    if(num & 1)
+    {
+      printf("Number is odd\n");
+    }
+    else
+    {
+      printf("Number is even\n");
+    }
+    return 0;
+}
+```
+### 02. Swap two numbers without using a temporary variable.
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+ * 02.write a c program to Swap two numbers without using a temporary variable.      *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+
+int main(void)
+{
+    int a,b;
+    printf("Enter a,b:");
+    scanf("%d %d",&a,&b);
+    a= a | b;
+    b= b ^ a;
+    a= a ^ b;
+    printf("a=%d b=%d\n",a,b);
+    return 0;
+}
+```  
+### 03. Multiply or divide a number by 2
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 03.write a c program Multiply or divide a number by 2 using bitwise shift.*
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+
+int main(void)
+{
+  int num,op=0;
+  printf("Enter Number:");
+  scanf("%d",&num);
+  printf("Enter 1 for mulitiply:");
+  printf("\nEnter 2 for division:\n");
+  scanf("%d",&op);
+  switch(op)
+  {
+    case 1:
+      printf("Given number Multiple by 2=%d\n",(num<<1));
+      break;
+    case 2:
+      printf("Given number Divisible by 2=%d\n",(num>>1));
+      break;
+    default:
+      printf("Enter valid number(1 or 2)");
+  }
+  return 0;
+}
+
+```  
+### 04. Count number of bits in give number 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 04. write a c program count number of bits in give number   *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+#if 1
+#include <stdio.h>
+
+int main(void)
+{
+    int num,count=0;
+    printf("Enter Number:");
+    scanf("%d",&num);
+    while(num)
+    {
+      if(num & 1)
+      {
+        count++;
+      }
+      num >>=1;
+    }
+    printf("number of set bits=%d\n",count);
+    return 0;
+}
+#endif
+#if 0
+#include <stdio.h>
+
+int main(void)
+{
+    int num,count=0,i;
+    printf("Enter Number:");
+    scanf("%d",&num);
+    for(i=0; i<32; i++)
+    {
+      if((1<<i)& num)
+      {
+        count++;
+      }
+    }
+    printf("number of bits=%d\n",count);
+    return 0;
+}
+#endif
+```  
+###
+```c
+
+```  
+###
+```c
+
+```  
+###
+```c
+
+```  
+###
+```c
+
+```  
+###
+```c
+
+```  
+###
+```c
+
+```  
+###
+```c
+
+```  
+###
+```c
+
+```  
+
 ### 1.Assign value between m to n bits
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
