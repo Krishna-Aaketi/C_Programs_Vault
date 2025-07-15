@@ -182,7 +182,7 @@ int main(void)
   return 0;
 }
 ```  
-### 8. Toggle the k-th bit of a number
+### 08. Toggle the k-th bit of a number
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * 8.write a C program to toggle the k-th bit of a number. *
@@ -202,7 +202,7 @@ int main(void)
   return 0;
 }
 ```  
-### 9.Check power of 2 or not in given number
+### 09.Check power of 2 or not in given number
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * 9.write a c program to check power of 2 or not in given number  *
