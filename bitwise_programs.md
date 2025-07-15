@@ -75,11 +75,11 @@ int main(void)
 }
 
 ```  
-### 04. Count number of bits in give number 
+### 04. Count number of Set bits in give number 
 ```c
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * 04. write a c program count number of bits in give number   *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 04. write a c program count number of SET bits in give number   *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #if 1
 #include <stdio.h>
 
@@ -309,11 +309,34 @@ int main(void)
     return 0;
 }
 ```  
+### 13. Isolate left most bit in given number
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 13.write a C program to isolate left most bit in given number   *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-### 1.Assign value between m to n bits
+#include <stdio.h>
+
+int main(void)
+{
+    int num,i=0,temp;
+    printf("Enter Number:");
+    scanf("%d",&num);
+    temp=num;
+    while(temp >>= 1)
+    {
+      i++;
+    }
+    num &= (1 << i);
+    printf("i=%d\n",i);
+    printf("After Isolate left Most Bit Value=%d\n",num);
+    return 0;
+}
+```
+### 14.Assign value between m to n bits
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * write a c program to assign value between m to n bits     *
+ *  14.write a c program to assign value between m to n bits *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <stdio.h>
@@ -332,30 +355,11 @@ int main(void)
   return 0;
 }
 ```
-### 2.Bit is set or not in a number?
+### 15.Bit is set or not in a number using Macro
 ```c
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * How to check if a particular bit is set or not in a number? *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
-#include <stdio.h>
-
-int main(void)
-{
-  int num,bit;
-  printf("Enter Number:");
-  scanf("%d",&num);
-  printf("Enter bit:");
-  scanf("%d",&bit);
-  (num & (1 << bit)) ? printf("Bit is Set\n") : printf("Bit is Reset\n");
-  return 0;
-}
-```
-### 3.Bit is set or not in a number in macro
-```c
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * How to check if a particular bit is set or not in a number in macro *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 15.How to check if a particular bit is set or not in a number in macro  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <stdio.h>
 #define BIT_IS_SET_OR_NOT(num,bit) (num & (1 << bit))
@@ -374,11 +378,11 @@ int main(void)
   return 0;
 }
 ```
-### 4.Convert decimal to binary in given number
+### 16.Convert decimal to binary in given number
 ```c
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * write a c program to convert decimal to binary in given number  *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 16.write a c program to convert decimal to binary in given number   *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <stdio.h>
 
@@ -396,10 +400,10 @@ int main(void)
   return 0;
 }
 ```
-### 5.Count leading zeros and tailing zeros in the given number
+### 17.Count leading zeros and tailing zeros in the given number
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * write a c program count leading zeros and tailing zeros in the given number       *
+ * 17.write a c program count leading zeros and tailing zeros in the given number    *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <stdio.h>
@@ -436,10 +440,10 @@ int main(void)
   return 0;
 }
 ```
-### 6.Count number of set and reset bits in give number
+### 18.Count number of set and reset bits in give number
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * write a c program count number of set and reset bits in give number       *
+ * 18.write a c program count number of set and reset bits in give number    *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #include <stdio.h>
 
@@ -463,105 +467,10 @@ int main(void)
   printf("one's=%d zero's=%d\n",ones,zeros);
   return 0;
 }
-```
-### 7.Count number of bits in give number
-```c
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * write a c program count number of bits in give number       *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-#if 1
-#include <stdio.h>
-
-int main(void)
-{
-    int num,count=0;
-    printf("Enter Number:");
-    scanf("%d",&num);
-    while(num)
-    {
-      if(num & 1)
-      {
-        count++;
-      }
-      num >>=1;
-    }
-    printf("%d\n",count);
-    return 0;
-}
-#endif
-
-#if 0
-#include <stdio.h>
-
-int main(void)
-{
-    int num,count=0,i;
-    printf("Enter Number:");
-    scanf("%d",&num);
-    for(i=0; i<32; i++)
-    {
-      if((1<<i)& num)
-      {
-        count++;
-      }
-    }
-    printf("%d\n",count);
-    return 0;
-}
-#endif
-```
-### 8.
+```   
+### 19. Interchange the first 4bits with next 4bits bytes in 32 bit Integer Variable
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Write a c program to interchange the first 4bits with next 4bits bytes in 32 bit Integer Variable *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-```
-### 9.Given number is even or odd
-```c
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
- * write a c program to given number is even or odd      *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
-#include <stdio.h>
-
-int main(void)
-{
-    int num,bit;
-    printf("Enter Number:");
-    scanf("%d",&num);
-    if(num & 1)
-    {
-      printf("Number is odd\n");
-    }
-    else
-    {
-      printf("Number is even\n");
-    }
-    return 0;
-}
-```
-### 10.Given number is power of 2 or not 
-```c
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * write a c program to check power of 2 or not in given number  *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
-#include <stdio.h>
-
-int main(void)
-{
-    int num,bit=0;
-    printf("Enter Number:");
-    scanf("%d",&num);
-    bit= ((num !=0) && (num & (num-1)));
-    if(bit == 1)
-    {
-      printf("Given number is not power of 2\n");
-    }
-    else
-    {
-      printf("Given number is power of 2\n");
-    }
-    return 0;
-}
 ```
