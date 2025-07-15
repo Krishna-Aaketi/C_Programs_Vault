@@ -120,37 +120,194 @@ int main(void)
 }
 #endif
 ```  
-###
+### 05. Check if the k-th bit is set in a number
 ```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 5.write a c program to check if the k-th bit is set in a number.  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#include <stdio.h>
+
+int main(void)
+{
+  int num,k;
+  printf("Enter Number:");
+  scanf("%d",&num);
+  printf("Enter k value:\n");
+  scanf("%d",&k);
+  if(((1 << k ) & num) == 0)
+    printf("Kth Bit is not set\n");
+  else
+    printf("Kth Bit is set\n");
+  return 0;
+}
 ```  
-###
+### 06. Set the k-th bit of a number
 ```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 6.write a C program to Set the k-th bit of a number.    *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#include <stdio.h>
+
+int main(void)
+{
+  int num,k;
+  printf("Enter Number:");
+  scanf("%d",&num);
+  printf("Enter k value:\n");
+  scanf("%d",&k);
+  num |= (1 << k ) ;
+  printf("number of set bits=%d\n",num);
+  return 0;
+}
 ```  
-###
+### 07. Reset the k-th bit of a number
 ```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 07.write a C program to reset the k-th bit of a number. *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#include <stdio.h>
+
+int main(void)
+{
+  int num,k;
+  printf("Enter Number:");
+  scanf("%d",&num);
+  printf("Enter k value:\n");
+  scanf("%d",&k);
+  num &= ~(1 << k ) ;
+  printf("number of set bits=%d\n",num);
+  return 0;
+}
 ```  
-###
+### 8. Toggle the k-th bit of a number
 ```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 8.write a C program to toggle the k-th bit of a number. *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#include <stdio.h>
+
+int main(void)
+{
+  int num,k;
+  printf("Enter Number:");
+  scanf("%d",&num);
+  printf("Enter k value:\n");
+  scanf("%d",&k);
+  num ^= (1 << k ) ;
+  printf("number of set bits=%d\n",num);
+  return 0;
+}
 ```  
-###
+### 9.Check power of 2 or not in given number
 ```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 9.write a c program to check power of 2 or not in given number  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#include <stdio.h>
+
+int main(void)
+{
+    int num,bit=0;
+    printf("Enter Number:");
+    scanf("%d",&num);
+    bit= ((num !=0) && (num & (num-1)));
+    if(bit == 1)
+    {
+      printf("Given number is not power of 2\n");
+    }
+    else
+    {
+      printf("Given number is power of 2\n");
+    }
+    return 0;
+}
 ```  
-###
+### 10. Turn off most right Bit in given number
 ```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 10.write a c program to turn off most right Bit in given number *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#include <stdio.h>
+
+int main(void)
+{
+    int num,i=0,temp;
+    printf("Enter Number:");
+    scanf("%d",&num);
+    temp=num;
+    while(temp)
+    {
+      if(temp & 1)
+      {
+        num &= ~ (1 << i);
+        break;
+      }
+      temp >>= 1;
+      i++;
+    }
+    printf("i=%d\n",i);
+    printf("After Turnoff Right Most Bit Value=%d\n",num);
+    return 0;
+}
 ```  
-###
+### 11. Isolate right most bit in given number
 ```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 11.write a C program to isolate right most bit in given number  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#include <stdio.h>
+
+int main(void)
+{
+    int num,i=0,temp;
+    printf("Enter Number:");
+    scanf("%d",&num);
+    temp=num;
+    while(temp)
+    {
+      if(temp & 1)
+      {
+        num &= (1 << i);
+        break;
+      }
+      temp >>= 1;
+      i++;
+    }
+    printf("i=%d\n",i);
+    printf("After Isolate Right Most Bit Value=%d\n",num);
+    return 0;
+}
 ```  
-###
+### 12. Turnoff most left bit in given number 
 ```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 12.write a c program to turn off most left bit in given number  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#include <stdio.h>
+
+int main(void)
+{
+    int num,i=0,temp;
+    printf("Enter Number:");
+    scanf("%d",&num);
+    temp=num;
+    while(temp >>= 1)
+    {
+      i++;
+    }
+    num &= ~ (1 << i);
+    printf("i=%d\n",i);
+    printf("After Turnoff left Most Bit Value=%d\n",num);
+    return 0;
+}
 ```  
 
 ### 1.Assign value between m to n bits
