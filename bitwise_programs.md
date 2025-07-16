@@ -468,9 +468,25 @@ int main(void)
   return 0;
 }
 ```   
-### 19. Interchange the first 4bits with next 4bits bytes in 32 bit Integer Variable
+### 19. Count number of set bits in a number with less iterations
 ```c
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * Write a c program to interchange the first 4bits with next 4bits bytes in 32 bit Integer Variable *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 19.write a c program to count number of set bits in a number with less iterations *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+
+int main(void)
+{
+  int num,count = 0;
+  printf("Enter a number: ");
+  scanf("%d", &num);
+  while (num)
+  {
+    num = num & (num - 1);
+    count++;
+  }
+  printf("Number of set bits: %d\n", count);
+  return 0;
+}
 ```
