@@ -171,10 +171,10 @@ int main(void)
   return 0;
 }
 ```
-###
+### 06. Find a middle word in given string 
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * 06. Write a c program to find a middle node in given string     *
+ * 06. Write a c program to find a middle word in given string     *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include<stdio.h>
@@ -216,7 +216,7 @@ int main(void)
   return 0;
 }
 ```
-###
+### 07. Find substring in given string 
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * 07. Write a c program to find substring in given string         *
@@ -313,7 +313,7 @@ void longest(char *str)
   printf("\nThe length of substring is : %d\n",max);
 }
 ```
-###
+### 09. Print each character of string  and print its address  
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * 09. Write a c program to print each character of string  and print its address    *
