@@ -490,3 +490,25 @@ int main(void)
   return 0;
 }
 ```
+### 20. Convert decimal to binary in given number
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 20.Write a c program to convert decimal to binary in given number *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+
+int main(void)
+{
+    int num,i=0,total_bits=0;
+    printf("Enter Number:");
+    scanf("%d",&num);
+    total_bits=(sizeof(num)*8-1);
+    for(i=0; i<=total_bits; i++)
+    {
+      printf("%u ",((num>>i)&1));
+    }
+    printf("\n");
+    return 0;
+}
+```
