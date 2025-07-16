@@ -760,7 +760,7 @@ int main(void)
 }
 
 ```
-###
+### 31. Non-repeating element in an array where every other element repeats twice
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * 31. Find the only non-repeating element in an array where every other element repeats twice.*
