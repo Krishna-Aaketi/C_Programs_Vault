@@ -760,3 +760,29 @@ int main(void)
 }
 
 ```
+###
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 31. Find the only non-repeating element in an array where every other element repeats twice.*
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+
+int main(void)
+{
+  int arr[100],n,res=0,i=0;
+  printf("Enter Number:");
+  scanf("%d",&n);
+  printf("Enter Elements\n");
+  for(i=0; i<n; i++)
+  {
+    scanf("%d",&arr[i]);
+  }
+  for(i=0; i<n; i++)
+  {
+    res ^=arr[i];
+  }
+  printf("first non repeated element=%d\n",res);
+  return 0;
+}
+```
