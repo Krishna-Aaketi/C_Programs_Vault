@@ -512,3 +512,251 @@ int main(void)
     return 0;
 }
 ```
+### 21. Print total nmuber of bits in given number 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 21.write a c program to print total nmuber of bits in given number  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+
+int main(void)
+{
+    int num,i=0,total_bits=0;
+    printf("Enter Number:");
+    scanf("%d",&num);
+    total_bits=(sizeof(num)*8-1);
+    for(i=total_bits; i>=0; i--)
+    {
+      printf("%u ",((num>>i)&1));
+    }
+    printf("\n");
+    return 0;
+}
+```
+### 22.Count number of zero's in given number
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 22.write a C program to count number of zero's in given number  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#if 0
+#include <stdio.h>
+
+int main(void)
+{
+    int num,count=0;
+    printf("Enter Number:");
+    scanf("%d",&num);
+    while(num)
+    {
+      if((num & 1) == 0)
+      {
+        count++;
+      }
+      num >>=1;
+    }
+    printf("number of zeros=%d\n",count);
+    return 0;
+}
+#endif
+
+#if 1
+#include <stdio.h>
+
+int main(void)
+{
+  int num,count=0,i;
+  printf("Enter Number:");
+  scanf("%d",&num);
+  while(num)
+  {
+    if(num%2==0)
+    {
+      count++;
+    }
+    num=num/2;
+  }
+  printf("number of zeros=%d\n",count);
+  return 0;
+}
+#endif
+```
+### 23. Reset m to n bits in the given number 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 23.write a program to c reset m to n bits in the given number   *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+
+int main(void)
+{
+    int num,m,n,mask;
+    printf("Enter Number :");
+    scanf("%d",&num);
+    printf("Enter m,n values:");
+    scanf("%d%d",&m,&n);
+    mask =~((((unsigned)1 << (n - m + 1)) - 1) << m);
+    num &=mask;
+    printf("Reset=%d\n", num);
+    return 0;
+}
+```
+### 24. Reset right side last two bits
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 24.write a c program reset right side last two bits         *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+
+int main(void)
+{
+    int num;
+    printf("Enter Number:");
+    scanf("%d",&num);
+    num=num & ~(0x3);
+    printf("%d\n",num);
+    return 0;
+}
+```
+### 25. Set m to n bits in the given number
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 25.write a program to c set m to n bits in the given number   *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+
+int main(void)
+{
+    int num,m,n,mask;
+    printf("Enter Number :");
+    scanf("%d",&num);
+    printf("Enter m,n values:");
+    scanf("%d%d",&m,&n);
+    mask = ((1 << (n - m + 1)) - 1) << m;
+    num |=mask;
+    printf("set=%d\n", num);
+    return 0;
+}
+```
+### 26. Swap the bytes in 16 bit Integer Variable using macro
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 26. Write a c program to Swap the bytes in 16 bit Integer Variable using macro  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+
+#define SWAP_BYTES_16(x)  (unsigned short)((((x) & 0x00FF) << 8) | (((x) & 0xFF00) >> 8))
+
+int main(void)
+{
+    unsigned short num,swapped;
+    printf("Enter Number:");
+    scanf("%hX",&num);
+    swapped = SWAP_BYTES_16(num);
+    printf("Original: 0x%04X\n", num);
+    printf("Swapped : 0x%04X\n", swapped);
+    return 0;
+}
+```
+### 27.Swap the bytes in 32 bit Integer Variable using macro 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 27.Write a c program to Swap the bytes in 32 bit Integer Variable using macro *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+
+#define SWAP_BYTES_32(x)  ( ((x & 0x000000FFU) << 24) | \
+                            ((x & 0x0000FF00U) << 8)  | \
+                            ((x & 0x00FF0000U) >> 8)  | \
+                            ((x & 0xFF000000U) >> 24) )
+
+int main(void)
+{
+    unsigned int val, swapped;
+    unsigned char *ptr;
+
+    printf("Enter Value (in hex, e.g., AABBCCDD): ");
+    scanf("%X", &val);
+
+    swapped = SWAP_BYTES_32(val);
+
+    ptr = (unsigned char *)&swapped;
+
+    printf("Bytes of swapped value: %02X %02X %02X %02X\n", ptr[0], ptr[1], ptr[2], ptr[3]);
+    printf("Original: 0x%08X\n", val);
+    printf("Swapped : 0x%08X\n", swapped);
+    printf("Size of unsigned int: %zu bytes\n", sizeof(unsigned int));
+
+    return 0;
+}
+```
+### 28. Swap nibble in the given number
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 28.write a program to swap nibble in the given number   *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+
+int main(void)
+{
+    int num,mask;
+    printf("Enter Number :");
+    scanf("%x",&num);
+    num=num & 0x0F;
+    mask=(((num & 0xC) >>2) | ((num & 0x3) <<2));
+    printf("swapped=0x%X\n",mask);
+    return 0;
+}
+```
+### 29. Swap bits within give value
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 29.write a c program to swap bits within give value *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#define RESET_M_TO_N(a,m,n)  a&(~(((~((unsigned)0))>>(sizeof(unsigned)*8-(m-n+1)))<<n))
+#define EXTRACT_M_TO_N(a,m,n)  a&(((~((unsigned)0))>>(sizeof(unsigned)*8-(m-n+1)))<<n)
+int main(void)
+{
+  unsigned int a=0xabcdef98;
+  unsigned int m1,n1,m2,n2;
+  printf("Enter m1,n1:");
+  scanf("%d%d",&m1,&n1);
+  printf("Enter m2,n2:");
+  scanf("%d%d",&m2,&n2);
+  a=((RESET_M_TO_N(a,m1,n1)&(RESET_M_TO_N(a,m2,n2)))|
+    (((EXTRACT_M_TO_N(a,m1,n1))>>(m1-m2))|((EXTRACT_M_TO_N(a,m2,n2))<<(m2-m1))));
+  printf("a=%x\n",a);
+  return 0;
+}
+```
+### 30. Toggle m to n bits in the given number 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 30.write a program to c toggle m to n bits in the given number  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+
+int main(void)
+{
+    int num,m,n,mask;
+    printf("Enter Number :");
+    scanf("%d",&num);
+    printf("Enter m,n values:");
+    scanf("%d%d",&m,&n);
+    mask = (((unsigned)1 << (n - m + 1)) - 1) << m;
+    num ^=mask;
+    printf("Toggle value=%d\n", num);
+    return 0;
+}
+
+```
