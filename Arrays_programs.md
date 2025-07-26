@@ -199,6 +199,12 @@ int main(void)
   return 0;
 }
 ```
+### Output 
+```c
+Enter Number of elements: 5
+Enter Elements :1 2 3 2 1
+1 2 3
+```
 ### 05. Find second large number in array 
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -235,6 +241,12 @@ int main(void)
   printf("Second large number=%d\n",temp);
   return 0;
 }
+```
+###
+```c
+Enter Number of elements(<100): 5
+Enter Elements :1 3 6 9 2
+Second large number=6
 ```
 ### 06. One left rotation in given array 
 ```c
