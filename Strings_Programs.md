@@ -1,9 +1,9 @@
 ## ------------------------- Strings Programs ---------------------------
-### 1.Convert integer string into integer number
+### 01. Convert integer string into integer number
 ```c
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *  write a c program to convert integer string into integer number  *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 01. write a c program to convert integer string into integer number   *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *S/
 
 #include<stdio.h>
 #include<stdlib.h>
