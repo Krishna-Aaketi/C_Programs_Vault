@@ -282,3 +282,337 @@ int main(void)
   return 0;
 }
 ```
+### Output
+```c
+Enter Number of elements(<100): 5
+Enter Elements :1 2 3 4 5
+2 3 4 5 1
+```
+###  09.Right rotation with kth position in given array 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 09. Write a c program to right rotation with kth position in given array  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  int i=0,n=0,k=0,j=0,l=0;
+  int arr[100],a[50];
+  printf("Enter Number of elements(<100): ");
+  scanf("%d",&n);
+  printf("Enter Elements :");
+  for(i=0;i<n; i++)
+  {
+    scanf("%d",&arr[i]);
+  }
+  printf("Enter kth position:");
+  scanf("%d",&k);
+  if(n<k)
+  {
+    printf("K value is greaterthen n value\n");
+    return 0;
+  }
+  i=0;
+  while(i<k)
+  {
+    a[i]=arr[n-k+i];
+    i++;
+  }
+  for(i=n-1; i >= k; i--)
+  {
+    arr[i]=arr[i-k];
+  }
+  i=0;
+  while(i < k)
+  {
+    arr[i]=a[i];
+    i++;
+  }
+  for(i=0;i<n; i++)
+  {
+    printf("%d ",arr[i]);
+  }
+  printf("\n");
+  return 0;
+}
+```
+### Output
+```c
+Enter Number of elements(<100): 5
+Enter Elements :1 2 3 4 5
+Enter kth position:3
+3 4 5 1 2
+```
+### 10. Merge sorted array in given two array
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 10. Write a c program to merge sorted array in given two array    *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(void)
+{
+  int i=0,n,m,j=0,temp;
+  int arr1[200],arr2[100];
+  printf("Enter Number of elements first Array(<100): ");
+  scanf("%d",&n);
+  if(n<=0)
+  {
+    printf("Enter Positive Values\n");
+    return 1;
+  }
+  printf("Enter Elements :");
+  for(i=0;i<n; i++)
+  {
+    scanf("%d",&arr1[i]);
+  }
+  printf("Enter Number of elements Second Array(<100): ");
+  scanf("%d",&m);
+  if(m<=0)
+  {
+    printf("Enter Positive Values\n");
+    return 1;
+  }
+  printf("Enter Elements :");
+  for(i=0; i<m; i++)
+  {
+    scanf("%d",&arr2[i]);
+  }
+  for(i = n ; i < n+m ; i++)
+  {
+    arr1[i]=arr2[j];
+    j++;
+  }
+  for(i=0 ; i < n+m; i++)
+  {
+    for(j=1; j <(n+m-i); j++)
+    {
+      if(arr1[j]<arr1[j-1])
+      {
+        temp=arr1[j];
+        arr1[j]=arr1[j-1];
+        arr1[j-1]=temp;
+      }
+    }
+  }
+  for(i = 0 ; i < n+m ; i++)
+  {
+    printf("%d ",arr1[i]);
+  }
+  printf("\n");
+  return 0;
+}
+```
+### Output
+```c
+Enter Number of elements first Array(<100): 5
+Enter Elements :10 20 30 40 50
+Enter Number of elements Second Array(<100): 5
+Enter Elements :60 70 80 90 100
+10 20 30 40 50 60 70 80 90 100
+```
+### 11.Check given array is sorted or not
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 11. Write a c program to Check given array is sorted or not       *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  int i=0,n,flag=0;
+  int arr[100];
+  printf("Enter Number of elements(<100): ");
+  scanf("%d",&n);
+  if(n<=0)
+  {
+    printf("Enter Positive Values\n");
+    return 1;
+  }
+  printf("Enter Elements :");
+  for(i=0;i<n; i++)
+  {
+    scanf("%d",&arr[i]);
+  }
+  for(i = 0 ; i < n-1 ; i++)
+  {
+    if(arr[i]<=arr[i+1])
+    {
+      continue;
+    }
+    else
+    {
+      flag=1;
+      break;
+    }
+  }
+  if(flag)
+  {
+    printf("Given Array is not Sorted array\n");
+  }
+  else
+  {
+    printf("Given Array is Sorted array\n");
+  }
+  return 0;
+}
+```
+### Output
+```c
+Enter Number of elements(<100): 5
+Enter Elements :1 2 3  4 5
+Given Array is Sorted array
+```
+### 12. Even number is one side odd numbers is one side in array  
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 12. write a c program to even number is one side odd numbers is one side in array *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+#if 1
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(void)
+{
+  int arr[5];
+  int num,i=0,j=0,k=0;
+  int *ptr1,*ptr2;
+  printf("Enter number of elements\n");
+  scanf("%d",&num);
+  printf("Enter elements\n");
+  for(i=0;i<num;i++)
+  {
+   scanf("%d",&arr[i]);
+  }
+  ptr1=malloc(sizeof(int)*50);
+  ptr2=malloc(sizeof(int)*50);
+  i=0;
+  while(i<5)
+  {
+    if(arr[i]%2==0)
+    {
+      ptr1[j]=arr[i];
+      i++;
+      j++;
+    }
+    else
+    {
+      ptr2[k]=arr[i];
+      i++;
+      k++;
+    }
+  }
+  for(i=0;i<j;i++)
+  {
+    arr[i]=ptr1[i];
+  }
+  for(i=0;i<k;i++)
+  {
+    arr[j]=ptr2[i];
+    j++;
+  }
+  for(i=0;i<5;i++)
+  {
+    printf("%d ",arr[i]);
+  }
+  printf("\n");
+  free(ptr1);
+  free(ptr2);
+  return 0;
+}
+#endif
+```
+### Output
+```c
+Enter number of elements
+5
+Enter elements
+10 13 15 16 17
+10 16 13 15 17
+```
+### 13. Print largest element index in array
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 13.write a c  program to print largest element index in array *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(void)
+{
+  int i=0,j=0,n=0,temp;
+  int arr[100];
+  printf("Enter Number of elements: ");
+  scanf("%d",&n);
+  printf("Enter Elements :");
+  for(i=0;i<n; i++)
+  {
+    scanf("%d",&arr[i]);
+  }
+  temp=arr[0];
+  j=i;
+  for(i=0; i<n; i++)
+  {
+     if(temp<=arr[i])
+     {
+       temp=arr[i];
+       j=i;
+     }
+  }
+  printf("Index=%d\n",j);
+  return 0;
+}
+```
+### Output
+```c
+Enter Number of elements: 5
+Enter Elements :10 40 50 20 15
+Index=2
+```
+### 14. Odd occurring number when all other numbers occur an even number of times
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 14. write a c program to find the odd occurring number when all other numbers occur an even number of times *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+
+int findOdd(int arr[], int n);
+
+int main(void)
+{
+    int arr[100],odd,n,i;
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+    printf("Enter array elements: ");
+    for (i = 0; i < n; i++)
+    {
+      scanf("%d", &arr[i]);
+    }
+    odd = findOdd(arr, n);
+    printf("Odd occurring number is: %d\n", odd);
+    return 0;
+}
+
+int findOdd(int arr[], int n)
+{
+  int res = 0,i;
+  for (i = 0; i < n; i++)
+  {
+    res ^= arr[i];
+  }
+  return res;
+}
+```
+### Output
+```c
+Enter number of elements: 5
+Enter array elements: 2 3 2 3 3
+Odd occurring number is: 3
+```
