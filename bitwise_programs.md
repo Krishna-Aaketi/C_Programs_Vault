@@ -24,6 +24,11 @@ int main(void)
     return 0;
 }
 ```
+### Output
+```c
+Enter Number:115
+Number is odd
+```
 ### 02. Swap two numbers without using a temporary variable.
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
@@ -37,12 +42,17 @@ int main(void)
     int a,b;
     printf("Enter a,b:");
     scanf("%d %d",&a,&b);
-    a= a | b;
+    a= a ^ b;
     b= b ^ a;
     a= a ^ b;
     printf("a=%d b=%d\n",a,b);
     return 0;
 }
+```
+### Output
+```c
+Enter a,b:50 20
+a=20 b=50
 ```  
 ### 03. Multiply or divide a number by 2
 ```c
@@ -74,6 +84,14 @@ int main(void)
   return 0;
 }
 
+```
+### Output
+```c
+Enter Number:30
+Enter 1 for mulitiply:
+Enter 2 for division:
+1
+Given number Multiple by 2=60
 ```  
 ### 04. Count number of Set bits in give number 
 ```c
@@ -119,7 +137,12 @@ int main(void)
     return 0;
 }
 #endif
-```  
+```
+### Output
+```c
+Enter Number:10
+number of set bits=2
+```
 ### 05. Check if the k-th bit is set in a number
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -141,7 +164,14 @@ int main(void)
     printf("Kth Bit is set\n");
   return 0;
 }
-```  
+```
+### Output
+```c
+Enter Number:10
+Enter k value:
+0
+Kth Bit is not set
+``` 
 ### 06. Set the k-th bit of a number
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -161,7 +191,14 @@ int main(void)
   printf("number of set bits=%d\n",num);
   return 0;
 }
-```  
+```
+### Output
+```c
+Enter Number:10
+Enter k value:
+0
+number of set bits=11
+```
 ### 07. Reset the k-th bit of a number
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -181,6 +218,13 @@ int main(void)
   printf("number of set bits=%d\n",num);
   return 0;
 }
+```
+### Output
+```c
+Enter Number:10
+Enter k value:
+1
+number of set bits=8
 ```  
 ### 08. Toggle the k-th bit of a number
 ```c
@@ -201,7 +245,14 @@ int main(void)
   printf("number of set bits=%d\n",num);
   return 0;
 }
-```  
+```
+### Output
+```c
+Enter Number:10
+Enter k value:
+0
+number of set bits=11
+```
 ### 09.Check power of 2 or not in given number
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -226,7 +277,13 @@ int main(void)
     }
     return 0;
 }
-```  
+```
+### Output
+```c
+Enter Positive Number:
+1024
+Given number is power of 2
+```
 ### 10. Turn off most right Bit in given number
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -255,7 +312,13 @@ int main(void)
     printf("After Turnoff Right Most Bit Value=%d\n",num);
     return 0;
 }
-```  
+```
+### Output
+```c
+Enter Number:10
+i=1
+After Turnoff Right Most Bit Value=8
+``` 
 ### 11. Isolate right most bit in given number
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -284,7 +347,13 @@ int main(void)
     printf("After Isolate Right Most Bit Value=%d\n",num);
     return 0;
 }
-```  
+```
+### Output
+```c
+Enter Number:10
+i=1
+After Isolate Right Most Bit Value=2
+``` 
 ### 12. Turnoff most left bit in given number 
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -308,6 +377,12 @@ int main(void)
     printf("After Turnoff left Most Bit Value=%d\n",num);
     return 0;
 }
+```
+### Output
+```c
+Enter Number:10
+i=3
+After Turnoff left Most Bit Value=2
 ```  
 ### 13. Isolate left most bit in given number
 ```c
@@ -333,27 +408,39 @@ int main(void)
     return 0;
 }
 ```
+### Output
+```c
+Enter Number:10
+i=3
+After Isolate left Most Bit Value=8
+```
 ### 14.Assign value between m to n bits
 ```c
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *  14.write a c program to assign value between m to n bits *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 14. write a c program to assign value between m to n bits all bits filled with 1's  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <stdio.h>
 
 int main(void)
 {
-  int num=0xFFFFFFFF,m,n,mask,value;
-  printf("Enter Value:");
-  scanf("%d",&value);
-  printf("Enter m,n bits:");
-  scanf("%d%d",&m,&n);
-  mask = (((unsigned)1 << (n - m + 1)) - 1) << m;
-  num &= ~(mask);
-  num |=(value<<m);
-  printf("set=%X\n", num);
-  return 0;
+    int num=0xFFFFFFFF,m,n,mask,value;
+    printf("Enter Value:");
+    scanf("%d",&value);
+    printf("Enter m,n bits:");
+    scanf("%d%d",&m,&n);
+    mask = (((unsigned)1 << (n - m + 1)) - 1) << m;
+    num &= ~(mask);
+    num |=(value<<m);
+    printf("set=%X\n", num);
+    return 0;
 }
+```
+### Output
+```c
+Enter Value:10
+Enter m,n bits:0 16
+set=FFFE000A
 ```
 ### 15.Bit is set or not in a number using Macro
 ```c
@@ -378,6 +465,12 @@ int main(void)
   return 0;
 }
 ```
+### Output
+```c
+Enter Number:12
+Enter bit:0
+Bit is Reset
+```
 ### 16.Convert decimal to binary in given number
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -399,6 +492,11 @@ int main(void)
   printf("\n");
   return 0;
 }
+```
+### Output
+```c
+Enter Number:10
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0
 ```
 ### 17.Count leading zeros and tailing zeros in the given number
 ```c
@@ -440,6 +538,11 @@ int main(void)
   return 0;
 }
 ```
+### Output
+```c
+Enter Number:32
+Leading zero's=26 Tails zero's=5
+```
 ### 18.Count number of set and reset bits in give number
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -467,7 +570,12 @@ int main(void)
   printf("one's=%d zero's=%d\n",ones,zeros);
   return 0;
 }
-```   
+```
+### Output
+```c
+Enter Number:32
+one's=1 zero's=31
+```  
 ### 19. Count number of set bits in a number with less iterations
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -489,6 +597,11 @@ int main(void)
   printf("Number of set bits: %d\n", count);
   return 0;
 }
+```
+### Output
+```c
+Enter a number: 32
+Number of set bits: 1
 ```
 ### 20. Convert decimal to binary in given number
 ```c
@@ -512,6 +625,11 @@ int main(void)
     return 0;
 }
 ```
+### Output
+```c
+Enter Number:10
+0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+```
 ### 21. Print total nmuber of bits in given number 
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -533,6 +651,11 @@ int main(void)
     printf("\n");
     return 0;
 }
+```
+### Output
+```c
+Enter Number:32
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0
 ```
 ### 22.Count number of zero's in given number
 ```c
@@ -582,6 +705,11 @@ int main(void)
 }
 #endif
 ```
+### Output
+```c
+Enter Number:32
+number of zeros=5
+```
 ### 23. Reset m to n bits in the given number 
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -603,6 +731,12 @@ int main(void)
     return 0;
 }
 ```
+### Output
+```c
+Enter Number :33
+Enter m,n values:0 2
+Reset=32
+```
 ### 24. Reset right side last two bits
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -620,6 +754,11 @@ int main(void)
     printf("%d\n",num);
     return 0;
 }
+```
+### Output
+```c
+Enter Number:7
+4
 ```
 ### 25. Set m to n bits in the given number
 ```c
@@ -642,6 +781,12 @@ int main(void)
     return 0;
 }
 ```
+### Output
+```c
+Enter Number :33
+Enter m,n values:1 4
+set=63
+```
 ### 26. Swap the bytes in 16 bit Integer Variable using macro
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -662,6 +807,12 @@ int main(void)
     printf("Swapped : 0x%04X\n", swapped);
     return 0;
 }
+```
+### Output
+```c
+Enter Number:1234
+Original: 0x1234
+Swapped : 0x3412
 ```
 ### 27.Swap the bytes in 32 bit Integer Variable using macro 
 ```c
@@ -696,6 +847,14 @@ int main(void)
     return 0;
 }
 ```
+### Output
+```c
+Enter Value (in hex, e.g., AABBCCDD): AABBCCDD
+Bytes of swapped value: AA BB CC DD
+Original: 0xAABBCCDD
+Swapped : 0xDDCCBBAA
+Size of unsigned int: 4 bytes
+```
 ### 28. Swap nibble in the given number
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -714,6 +873,11 @@ int main(void)
     printf("swapped=0x%X\n",mask);
     return 0;
 }
+```
+### Output
+```c
+Enter Number :31
+swapped=0x4
 ```
 ### 29. Swap bits within give value
 ```c
@@ -738,6 +902,12 @@ int main(void)
   return 0;
 }
 ```
+### Output
+```c
+Enter m1,n1:2 4
+Enter m2,n2:4 2
+a=62
+```
 ### 30. Toggle m to n bits in the given number 
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -759,6 +929,12 @@ int main(void)
     return 0;
 }
 
+```
+### Output
+```c
+Enter Number :31
+Enter m,n values:0 3
+Toggle value=16
 ```
 ### 31. Non-repeating element in an array where every other element repeats twice
 ```c
@@ -785,4 +961,11 @@ int main(void)
   printf("first non repeated element=%d\n",res);
   return 0;
 }
+```
+### Output
+```c
+Enter Number:5
+Enter Elements
+1 2 3 4 5
+first non repeated element=1
 ```
