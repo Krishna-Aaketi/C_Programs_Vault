@@ -3,7 +3,7 @@
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * 01. write a c program to convert integer string into integer number   *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *S/
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include<stdio.h>
 #include<stdlib.h>
