@@ -27,6 +27,11 @@ int main(void)
   return 0;
 }
 ```
+### Output
+```c
+Enter String :krishna6244
+6244
+```
 ### 02. Convert into string into integer number 
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -65,6 +70,11 @@ int main(void)
   return 0;
 }
 ```
+### Output
+```c
+Enter String :krishna6244
+k-107 r-114 i-105 s-115 h-104 n-110 a-97 6-54 2-50 4-52 4-52
+```
 ### 03. Count number of substring in given string
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -77,8 +87,6 @@ int main(void)
 
 int main(void)
 {
-  //char *p="this is krishna aaketi and he is bad boy";
-  //char *s="is";
   char str[100],s[10];
   char *ptr=str,*sptr=s;
   int i=0,j=0,count=0,len;
@@ -112,6 +120,14 @@ int main(void)
  return 0;
 }
 ```
+### Output
+```c
+Enter string
+krishna is good
+Enter Sub string
+is
+"" is repeated in "is" for 2 times
+```
 ### 04. Find little Endian or Big Endian 
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -139,6 +155,12 @@ int main(void)
         printf("Unknown Endian format\n");
     return 0;
 }
+```
+### Output
+```c
+Number: 0x12345678
+Byte order: 78 56 34 12
+System is Little Endian
 ```
 ### 05. Find a last second word length in given string
 ```c
@@ -170,6 +192,12 @@ int main(void)
   printf("%d\n",count);
   return 0;
 }
+```
+### Output
+```c
+Enter string
+this is krishna aaketi
+7
 ```
 ### 06. Find a middle word in given string 
 ```c
@@ -215,6 +243,12 @@ int main(void)
   printf("\n");
   return 0;
 }
+```
+### Output
+```c
+Enter string
+this is krishna aaketi
+krishna
 ```
 ### 07. Find substring in given string 
 ```c
@@ -263,6 +297,15 @@ int main(void)
   printf("number of substring=%d\n",count);
   return 0;
 }
+```
+### Output
+```c
+Enter String
+krishna is a name
+Enter Sub string
+name
+"name" is present in "name" at index=13
+number of substring=1
 ```
 ### 08. Find longest non repeating substring in given string
 ```c
@@ -313,6 +356,12 @@ void longest(char *str)
   printf("\nThe length of substring is : %d\n",max);
 }
 ```
+### Output
+```c
+Enter a string : krishnaaaketiisaname
+The longest substring : krishna
+The length of substring is : 7
+```
 ### 09. Print each character of string  and print its address  
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -332,6 +381,16 @@ int main(void)
   }
   return 0;
 }
+```
+### Output
+```c
+K       0x7ffe6c5b2340
+R       0x7ffe6c5b2341
+I       0x7ffe6c5b2342
+S       0x7ffe6c5b2343
+H       0x7ffe6c5b2344
+N       0x7ffe6c5b2345
+A       0x7ffe6c5b2346
 ```
 ### 10. Print each character of string  and print its address by using pointers
 ```c
@@ -355,10 +414,20 @@ int main(void)
   return 0;
 }
 ```
+### Output
+```c
+K       0x61bf072db004
+R       0x61bf072db005
+I       0x61bf072db006
+S       0x61bf072db007
+H       0x61bf072db008
+N       0x61bf072db009
+A       0x61bf072db00a
+```
 ### 11. Take input from user and print the string 
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * 12. Write a c program to take input from user and print the string  *
+ * 11. Write a c program to take input from user and print the string  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include<stdio.h>
@@ -371,6 +440,11 @@ int main(void)
   printf("%s\n",str);
   return 0;
 }
+```
+### Output
+```c
+Enter String :krishna
+krishna
 ```
 ### 12. Reverse string using pointer in recursive function 
 ```c
@@ -407,6 +481,10 @@ void reverse_Recursive(char *start, char *end)
   reverse_Recursive(start + 1, end - 1);
 }
 ```
+### Output
+```c
+
+```
 ### 13. Sum of digit in the given strings
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -436,12 +514,16 @@ int main(void)
   return 0;
 }
 ```
+### Output
+```c
+Enter String :krishna6244
+sum=16
+```
 ### 14. convert upper case letter to lower case letter in given string and viceversa 
 ```c
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * 14. write a c++ program to convert upper case letter to lower case letter in          *
- * given string and viceversa                                                            *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 14. write a c++ program to convert upper case letter to lower case letter in given string and viceversa *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include<stdio.h>
 #include<string.h>
@@ -468,4 +550,10 @@ int main(void)
   printf("the string is :%s\n",str);
   return 0;
 }
+```
+### Output
+```c
+Enter a string
+KrisHNA AaKeti
+the string is :kRIShna aAkETI
 ```
