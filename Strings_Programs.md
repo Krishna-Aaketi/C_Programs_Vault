@@ -557,3 +557,556 @@ Enter a string
 KrisHNA AaKeti
 the string is :kRIShna aAkETI
 ```
+### 15. Remove duplicate character in given string
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 15. Write a c program to remove duplicate character in given string *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#if 0
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+  char str1[100],str2[100];
+  int i,j=0,k,temp;
+  printf("Enter a string: ");
+  scanf("%s",str1);
+  for(i=0;str1[i] != '\0';i++)
+  {
+    temp=0;
+    for(k=0;k<j;k++)
+    {
+      if(str2[k] == str1[i])
+      {
+        temp=1;
+        break;
+      }
+    }
+    if(!temp)
+    {
+      str2[j++] = str1[i];
+    }
+  }
+  str2[j] = '\0';
+  printf("%s\n", str2);
+  return 0;
+}
+
+#endif
+
+#if 1
+
+#include<stdio.h>
+#include<string.h>
+
+int main(void)
+{
+  char str[100];
+  int i, j, k;
+  printf("Enter String: ");
+  scanf("%s", str);
+  for(i=0;str[i] != '\0';i++)
+  {
+    j=i+1;
+    while(str[j])
+    {
+      if(str[i]==str[j])
+      {
+        for(k=j;str[k]!='\0';k++)
+        {
+          str[k]=str[k + 1];
+        }
+      }
+      else
+      {
+        j++;
+      }
+    }
+  }
+  printf("The String is=%s\n", str);
+  return 0;
+}
+#endif
+
+```
+### Output
+```c
+Enter String: aaavvvbbbbeecccdd
+The String is=avbecd
+```
+### 16. Count vowels consonants, digits, and spaces in a string 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 16. Write a C program to count vowels consonants, digits, and spaces in a string      *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<string.h>
+
+int main(void)
+{
+  char str[100];
+  int i=0,count=0,vowels=0,digits=0,spaces=0;
+  printf("Enter a string(<99):\n");
+  scanf("%[^\n]",str);
+  while(str[i])
+  {
+    if((str[i] == 'a' || str[i] == 'e' || str[i] =='i' || str[i]=='o' || str[i] =='u') ||
+      (str[i] == 'A' || str[i] == 'E' || str[i] =='I' || str[i]=='O' || str[i] =='U'))
+    {
+      vowels++;
+    }
+    else if((str[i] >= 'a' && str[i] <='z') || (str[i] >='A' && str[i] <='Z'))
+    {
+      count++;
+    }
+    else if(str[i]==' ')
+    {
+      spaces++;
+    }
+    else if(str[i] >='0' && str[i] <= '9')
+    {
+      digits++;
+    }
+    i++;
+  }
+  printf("In given string Vowels=%d consonants=%d digits=%d spaces=%d \n",vowels,count,digits,spaces);
+  return 0;
+}
+```
+### Output
+```c
+Enter a string(<99):
+krishna aaketi
+In given string Vowels=6 consonants=7 digits=0 spaces=1
+```
+### 17. Implement strrev() function without using strrev()
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 17.write a C program to implement strrev() function without using strrev  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<string.h>
+
+void my_strrev(char *ptr);
+
+int main(void)
+{
+  char str[100];
+  int i=0;
+  printf("Enter String :");
+  fgets(str,99,stdin);
+  str[strlen(str)-1]='\0';
+  my_strrev(str);
+  printf("Reverse String=%s\n",str);
+  return 0;
+}
+
+void my_strrev(char *ptr)
+{
+  int i=0;
+  char temp;
+  int len=strlen(ptr);
+  for(i=0; i<len; i++)
+  {
+    len--;
+    temp=*(ptr+i);
+    *(ptr+i)=*(ptr+len);
+    *(ptr+len)=temp;
+  }
+  return ;
+}
+```
+### Output
+```c
+Enter String :krishna aaketi
+Reverse String=itekaa anhsirk
+```
+### 18. Check given string is Palindrome or not
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 18. Write a C program to Check given string is Palindrome or not          *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<string.h>
+
+int main(void)
+{
+  char str[100];
+  int i=0,len,flag=0;
+  printf("Enter String(<99):");
+  fgets(str,99,stdin);
+  str[strlen(str)-1]='\0';
+  len=strlen(str);
+  for(i=0; i<=len; i++)
+  {
+    if(str[i] !=str[--len])
+    {
+      flag=1;
+      break;
+    }
+  }
+  if(flag==1)
+  {
+    printf("\"%s\" is not palindrome string\n",str);
+  }
+  else
+  {
+    printf("%s is palindrome string\n",str);
+  }
+  return 0;
+}
+```
+### Output
+```c
+Enter String(<99):malayalam
+malayalam is palindrome string
+```
+### 19. Check given two strings is anagrams or not
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 19. Write a C program to Check given two strings is anagrams or not       *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<string.h>
+
+int main(void)
+{
+  char str1[100],str2[100];
+  int i=0,j,len,flag=0;
+  printf("Enter String 1:(<99):");
+  fgets(str1,99,stdin);
+  str1[strlen(str1)-1]='\0';
+  len=strlen(str1);
+  printf("Enter String 2:(<99):");
+  fgets(str2,99,stdin);
+  str2[strlen(str2)-1]='\0';
+
+  if(strlen(str1)==strlen(str2))
+  {
+    flag=0;
+    for(i=0; i<len; i++)
+    {
+      for(j=0; j<strlen(str2); j++)
+      {
+        if(str1[i] ==str2[j])
+        {
+          flag=1;
+          break;
+        }
+      }
+      if(flag==0)
+      {
+        break;
+      }
+    }
+    if(flag==1)
+    {
+      printf("given two string are anagram string\n");
+    }
+    else
+    {
+      printf("given two strings are not anagram string\n");
+    }
+    return 0;
+  }
+  else
+  {
+    printf("Given two string are Not anagram\n");
+  }
+  return 0;
+}
+```
+### Output
+```c
+Enter String 1:(<99):silent
+Enter String 2:(<99):lisent
+given two string are anagram string
+```
+### 20. Count number of words in given string  
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 20. Write a C program to count number of words in given string  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<string.h>
+
+int main(void)
+{
+  char str[100];
+  int i=0,count=0;
+  printf("Enter a string(<99):\n");
+  fgets(str,99,stdin);
+  // Remove newline character if present
+  str[strcspn(str, "\n")] = '\0';
+  while(str[i])
+  {
+    if(str[i]==' ' || str[i+1]=='\0' || str[i]=='.')
+    {
+      count++;
+    }
+    i++;
+  }
+  printf("In given string Number of Words=%d \n",count);
+  return 0;
+}
+```
+### Output
+```c
+Enter a string(<99):
+krishna aaketi this is a name.and he is a man
+In given string Number of Words=11
+```
+### 21. Implement strcat function
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 21. Write a C program to implement strcat function    *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+void my_strcat(char *,char *);
+
+int main(void)
+{
+    char str1[200],str2[100];
+    int i,count=0;
+    printf("Enter string 1:");
+    scanf("%s",str1);
+    printf("Enter String 2:");
+    scanf("%s",str2);
+    my_strcat(str1,str2);
+    printf("%s\n",str1);
+    return 0;
+}
+
+void my_strcat(char *str1,char *str2)
+{
+  int i=0,j=0;
+  while(str1[i])
+  {
+    i++;
+  }
+  while(str1[i]=str2[j])
+  {
+      i++;
+      j++;
+  }
+}
+```
+### Output
+```c
+Enter string 1:krishna
+Enter String 2:aaketi
+krishnaaaketi
+```
+### 22. Most frequent character in given string
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 22. Write a C program to Find the most frequent character in given string *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<string.h>
+
+int main(void)
+{
+  char str[100],arr[256]={0};
+  int i=0,temp=0,x=0;
+  printf("Enter a string(<99):\n");
+  fgets(str,99,stdin);
+  // Remove newline character if present
+  str[strcspn(str, "\n")] = '\0';
+  while(str[i])
+  {
+    arr[str[i]] += 1;
+    i++;
+  }
+  i=0;
+  temp=arr[0];
+  while(i<256)
+  {
+    if(temp < arr[i])
+    {
+      temp=arr[i];
+      x=i;
+    }
+    i++;
+  }
+  printf("Most frequent character is '%c' and %d times\n",x,temp);
+  return 0;
+}
+```
+### Output
+```c
+Enter a string(<99):
+krishna aaketi
+Most frequent character is 'a' and 3 times
+```
+### 23. Replace spaces with Hyphens in given a string
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 23. Write a C program to Replace spaces with Hyphens in given a string  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<string.h>
+
+int main(void)
+{
+  char str[100];
+  int i=0;
+  printf("Enter a string(<99):\n");
+  scanf("%[^\n]",str);
+  while(str[i])
+  {
+    if(str[i]==' ')
+    {
+      str[i]='-';
+    }
+    i++;
+  }
+  printf("In given string is %s\n",str);
+  return 0;
+}
+```
+### Output
+```c
+Enter a string(<99):
+i am krishna aaketi
+The string is i-am-krishna-aaketi
+```
+### 24. Remove all Spaces in given string
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 24. Write a C program to Remove all Spaces in given string  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  char str[100],str2[100];
+  int i=0,j=0;
+  printf("Enter a string(<99):\n");
+  scanf("%[^\n]",str);
+  while(str[i])
+  {
+    if(str[i] !=' ')
+    {
+      str2[j]=str[i];
+      j++;
+    }
+    i++;
+  }
+  str2[j]='\0';
+  printf("In given string is %s\n",str2);
+  return 0;
+}
+```
+### Output
+```c
+Enter a string(<99):
+i am krishna aaketi
+In given string is iamkrishnaaaketi
+```
+### 25. Remove all Spaces in given string using one array
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 25. Write a C program to Remove all Spaces in given string using one array  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  char str[100];
+  int i=0,j=0;
+  printf("Enter a string(<99):\n");
+  scanf("%[^\n]",str);
+  while(str[i])
+  {
+    if(str[i] !=' ')
+    {
+      str[j]=str[i];
+      j++;
+    }
+    i++;
+  }
+  str[j]='\0';
+  printf("In given string is %s\n",str);
+  return 0;
+}
+```
+### Output
+```c
+Enter a string(<99):
+i am krishna aaketi
+In given string is iamkrishnaaaketi
+```
+### 26. Implement the strstr function  
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 26. Write a C program to implement the strstr function      *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<string.h>
+
+void my_strstr(char *str,char *s);
+
+int main(void)
+{
+  char str[100],s[20];
+  printf("Enter a string(<99):\n");
+  scanf("%[^\n]",str);
+  printf("Enter a substring:\n");
+  scanf("%s",s);
+  my_strstr(str,s);
+  return 0;
+}
+
+void my_strstr(char *str,char *s)
+{
+  int i=0,j=0,k=0;
+  while(str[i])
+  {
+    if(str[i] == s[j])
+    {
+      j++;
+      if(s[j]=='\0')
+      {
+        k=1;
+        break;
+      }
+    }
+    else
+    {
+      j=0;
+    }
+    i++;
+  }
+  if(k)
+  {
+    printf("The Substring is present in Index=%d\n",i-j+1);
+  }
+  else
+  {
+    printf("The Substring is not present in Given string\n");
+  }
+}
+```
+### Output
+```c
+Enter a string(<99):
+krishna aaketi is a name
+Enter a substring:
+is
+The Substring is present in Index=2
+```
