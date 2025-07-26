@@ -242,7 +242,7 @@ int main(void)
   return 0;
 }
 ```
-###
+### Output
 ```c
 Enter Number of elements(<100): 5
 Enter Elements :1 3 6 9 2
@@ -615,4 +615,241 @@ int findOdd(int arr[], int n)
 Enter number of elements: 5
 Enter array elements: 2 3 2 3 3
 Odd occurring number is: 3
+```
+### 15. Remove space in given string
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 15. write a c program to remove space in given string   *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+
+int findOddOccurrence(int arr[], int size);
+int main(void)
+{
+    //int arr[] = {4, 2, 4, 2, 7, 5, 5};
+    //int size = sizeof(arr) / sizeof(arr[0]);
+    int num,odd,arr[100],i;
+    printf("Enter Number Elements\n");
+    scanf("%d",&num);
+    printf("Enter Elements\n");
+    for(i=0;i<num;i++)
+    {
+      scanf("%d",&arr[i]);
+    }
+    odd = findOddOccurrence(arr, num);
+    printf("The odd occurring number is: %d\n", odd);
+
+    return 0;
+}
+
+int findOddOccurrence(int arr[], int size)
+{
+    int result = 0,i;
+    for (i = 0; i < size; i++)
+    {
+        result ^= arr[i];
+    }
+    return result;
+}
+```
+### Output
+```c
+Enter Number Elements
+5
+Enter Elements
+10 11 11 12 13
+The odd occurring number is: 11
+```
+### 16.Print unique array in given array
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 16. write a c program to print unique array in given array  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(void)
+{
+  int i=0,j=1,n=0,temp;
+  int arr[100],a[50];
+  printf("Enter Number of elements: ");
+  scanf("%d",&n);
+  printf("Enter Elements :");
+  for(i=0;i<n; i++)
+  {
+    scanf("%d",&arr[i]);
+  }
+  for(i=0; i<n; i++)
+  {
+    for(j=1;j<n-i;j++)
+    {
+      if(arr[j]<arr[j-1])
+      {
+        temp=arr[j];
+        arr[j]=arr[j-1];
+        arr[j-1]=temp;
+      }
+    }
+  }
+  a[0]=arr[0];
+  for(i=0;i<n-1; i++)
+  {
+    if(arr[i]==arr[i+1])
+    {
+      continue;
+    }
+    else
+    {
+      a[j]=arr[i+1];
+      j++;
+    }
+  }
+  for(i=0;i<j;i++)
+  {
+    printf("%d ",a[i]);
+  }
+  printf("\n");
+  return 0;
+}
+```
+### Output
+```c
+Enter Number of elements: 6
+Enter Elements :10 20 30 40 30 20
+10 20 30 40
+```
+### 17. Rotate an array by 2 towards left
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 17. write a program to rotate an array by 2 towards left  *
+ *  I/p:{1,2,3,4,5}                                          *
+ *  o/p:{4,5,1,2,3}                                          *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+int main(void)
+{
+    int arr[] = {1, 2, 3, 4, 5},n,d,i;
+    n = sizeof(arr)/sizeof(arr[0]);
+    d = 2; // number of positions to rotate
+    rotateLeft(arr, n, d);
+    printf("Rotated Array: ");
+    for (i = 0; i < n; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+    return 0;
+}
+
+void rotateLeft(int arr[], int n, int d)
+{
+    int temp[d],i;
+    // Step 1: Copy first 'd' elements
+    for (i = 0; i < d; i++)
+        temp[i] = arr[i];
+    // Step 2: Shift the rest of the elements to the left
+    for (i = 0; i < n - d; i++)
+        arr[i] = arr[i + d];
+    // Step 3: Copy 'd' elements to the end
+    for (i = 0; i < d; i++)
+        arr[n - d + i] = temp[i];
+    return 0;
+}
+```
+### Output
+```c
+ I/p:{1,2,3,4,5}
+ o/p:{4,5,1,2,3}
+
+```
+### 18. Count number of even and odd number in array
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 18. Write a c program to Count number of even and odd number in array *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  int i=0,n,odd=0,even=0;
+  int arr[100];
+  printf("Enter Number of elements(<100): ");
+  scanf("%d",&n);
+  if(n<=0)
+  {
+    printf("Enter Positive Values\n");
+    return 1;
+  }
+  printf("Enter Elements :");
+  for(i=0;i<n; i++)
+  {
+    scanf("%d",&arr[i]);
+  }
+  for(i = 0 ; i < n ; i++)
+  {
+    if(arr[i]%2 || arr[i]==1)
+    {
+      odd++;
+    }
+    else
+    {
+      even++;
+    }
+  }
+  printf("Number of Even =%d and Odd =%d\n",even,odd);
+  return 0;
+}
+```
+### Output
+```c
+Enter Number of elements(<100): 5
+Enter Elements :10 13 15 16 18
+Number of Even =3 and Odd =2
+```
+### 19.Find duplicate elements in given array
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 19. Write a c program to find duplicate elements in given array   *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  int i=0,n,j,temp=0;
+  int arr[100];
+  printf("Enter Number of elements(<100): ");
+  scanf("%d",&n);
+  if(n<=0)
+  {
+    printf("Enter Positive Values\n");
+    return 1;
+  }
+  printf("Enter Elements :");
+  for(i=0;i<n; i++)
+  {
+    scanf("%d",&arr[i]);
+  }
+  for(i = 0 ; i < n ; i++)
+  {
+    for(j=i+1; j<n; j++)
+    {
+      if(arr[i]==arr[j] && temp != arr[i])
+      {
+        temp=arr[i];
+        printf("%d ",arr[i]);
+      }
+    }
+  }
+  printf("\n");
+  return 0;
+}
+```
+### Output
+```c
+Enter Number of elements(<100): 5
+Enter Elements :10 20 30 20 10
+10 20
 ```
