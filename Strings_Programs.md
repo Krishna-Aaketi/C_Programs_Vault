@@ -1110,3 +1110,248 @@ Enter a substring:
 is
 The Substring is present in Index=2
 ```
+### 27. Print Character with their Frequencies in given string
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 27. Write a C program to Print Character with their Frequencies in given string *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<string.h>
+
+int main(void)
+{
+  char str[100],arr[256]={0};
+  int i=0,temp=0,x=0;
+  printf("Enter a string(<99):\n");
+  fgets(str,99,stdin);
+  // Remove newline character if present
+  str[strcspn(str, "\n")] = '\0';
+  while(str[i])
+  {
+    arr[(unsigned char)str[i]] += 1;
+    i++;
+  }
+  i=0;
+  while(str[i])
+  {
+    if(arr[str[i]] != 0)
+    {
+      printf("Character Frequencies is '%c' and %d times\n",(unsigned char)str[i],arr[str[i]]);
+      arr[(unsigned char)str[i]]=0;
+    }
+    i++;
+  }
+  return 0;
+}
+```
+```c
+Enter a string(<99):
+krishna_aaketi
+Character Frequencies is 'k' and 2 times
+Character Frequencies is 'r' and 1 times
+Character Frequencies is 'i' and 2 times
+Character Frequencies is 's' and 1 times
+Character Frequencies is 'h' and 1 times
+Character Frequencies is 'n' and 1 times
+Character Frequencies is 'a' and 3 times
+Character Frequencies is '_' and 1 times
+Character Frequencies is 'e' and 1 times
+Character Frequencies is 't' and 1 times
+```
+### 28. Capitalize the First Letter Each word in Given String
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 28. Write a c program to Capitalize the First Letter Each word in Given String  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<string.h>
+
+int main(void)
+{
+  char str[100];
+  int i=0;
+  printf("Enter String(<100):");
+  fgets(str,99,stdin);
+  str[strcspn(str,"\n")]='\0';
+  while(str[i])
+  {
+    if(i==0 && (str[i+1] >= 'a' && str[i+1] <= 'z'))
+    {
+      str[i]=str[i]-' ';
+    }
+    else if( str[i]== ' ' || str[i]== ',' || str[i] == '.')
+    {
+      if(str[i+1] >= 'a' && str[i+1] <= 'z')
+      {
+        str[i+1]=str[i+1]-' ';
+      }
+    }
+    i++;
+  }
+  printf("%s\n",str);
+  return 0;
+}
+```
+### Output
+```c
+Enter String(<100):
+krishna aaketi, is a Programmer. at viven
+Krishna Aaketi, Is A Programmer. At Viven
+```
+### 29. Implement atoi implementation 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 29. write a c program to Implement atoi implementation  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<string.h>
+
+int my_atoi(char *ptr);
+
+int main(void)
+{
+  char str[100];
+  int num;
+  printf("Enter String :");
+  fgets(str,99,stdin);
+  str[strcspn(str,"\n")]='\0';
+  num=my_atoi(str);
+  printf("%d\n",num);
+  return 0;
+}
+
+int my_atoi(char *ptr)
+{
+  int num=0,i=0,sign=1;
+  while(*(ptr+i)==' ' || *(ptr+i)=='\t')
+  {
+    i++;
+  }
+  if(*(ptr+i)=='-' || *(ptr+i)=='+')
+  {
+    if(*(ptr+i)=='-')
+    {
+      sign=-1;
+    }
+    i++;
+  }
+  while((*(ptr+i)>='0') && (*(ptr+i)<='9'))
+  {
+    num=( num * 10 ) + (*(ptr+i)-48);
+    i++;
+  }
+  return num * sign;
+}
+```
+### Output
+```c
+Enter String :-12345
+The Integer Value=-12345
+
+Enter String :krishna123
+The Integer Value=0
+```
+### 30. Implement the strcmp function
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 30. Write a C program to implement the strcmp function      *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<string.h>
+
+int my_strcmp(char *str,char *s);
+
+int main(void)
+{
+  int flag=0;
+  char str1[100],str2[100];
+  printf("Enter a string1(<99):\n");
+  scanf("%s",str1);
+  printf("Enter a string2:\n");
+  scanf("%s",str2);
+  flag=my_strcmp(str1,str2);
+  if(flag==0)
+  {
+    printf("Difference=%d\nTwo string are Equal\n",flag);
+  }
+  else
+  {
+    printf("Difference=%d\nTwo string are Not Equal\n",flag);
+  }
+  return 0;
+}
+
+int my_strcmp(char *str1,char *str2)
+{
+  int i=0,j=0,k=0;
+  while(str1[i] !='\0' || str2[i] !='\0')
+  {
+    if(str1[i] == str2[i])
+    {
+      i++;
+    }
+    else
+    {
+      return str1[i]-str2[i];
+    }
+  }
+  return 0;
+}
+```
+### Output
+```c
+Enter a string1(<99):
+krishna
+Enter a string2:
+aaketi
+Difference=10
+Two string are Not Equal
+
+Enter a string1(<99):
+krishna
+Enter a string2:
+krishna
+Difference=0
+Two string are Equal
+```
+### 31. Toggle all characters  in Given String 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 31. Write a c program to Toggle all characters  in Given String   *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<string.h>
+
+int main(void)
+{
+  char str[100];
+  int i=0;
+  printf("Enter String(<100):");
+  fgets(str,99,stdin);
+  str[strcspn(str,"\n")]='\0';
+  while(str[i])
+  {
+    if(str[i] >= 'a' && str[i] <= 'z')
+    {
+      str[i]=str[i]-' ';
+    }
+    else if(str[i] >= 'A' && str[i] <= 'Z')
+    {
+        str[i]=str[i]+' ';
+    }
+    i++;
+  }
+  printf("The Toggle string is %s\n",str);
+  return 0;
+}
+```
+### Output
+```c
+Enter String(<100):KriSHna AAkETi
+The Toggle String is kRIshNA aaKetI
+```
