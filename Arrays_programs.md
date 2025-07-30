@@ -853,3 +853,219 @@ Enter Number of elements(<100): 5
 Enter Elements :10 20 30 20 10
 10 20
 ```
+### 20. Print right to left Leads in Array
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 20. Write a c program to print right to left Leads in Array *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(void)
+{
+  int i=0,n=0,temp;
+  int arr[100];
+  printf("Enter Number of elements(<100): ");
+  scanf("%d",&n);
+  printf("Enter Elements :");
+  if(n<=0)
+  {
+    printf("Enter Positive Number\n");
+    return 0;
+  }
+  for(i=0;i<n; i++)
+  {
+    scanf("%d",&arr[i]);
+  }
+  temp=arr[n-1];
+  printf("%d ",temp);
+  for(i=n-1; i >=0; i--)
+  {
+    if(temp<arr[i])
+    {
+      temp=arr[i];
+      printf("%d ",temp);
+    }
+  }
+  printf("\n");
+  return 0;
+}
+```
+### Output
+```c
+Enter Number of elements(<100): 6
+Enter Elements :1 3 5 6 -1 -5
+-5 -1 6
+```
+### 21. Print Common elements in given arrays 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 21. Write a c program to print Common elements in given arrays    *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  int i=0,n,m,j=0,temp,k=0,z,flag=1;
+  int arr1[100],arr2[100],pri[100];
+  printf("Enter Number of elements first Array(<100): ");
+  scanf("%d",&n);
+  if(n<=0)
+  {
+    printf("Enter Positive Values\n");
+    return 1;
+  }
+  printf("Enter Elements :");
+  for(i=0;i<n; i++)
+  {
+    scanf("%d",&arr1[i]);
+  }
+  printf("Enter Number of elements Second Array(<100): ");
+  scanf("%d",&m);
+  if(m<=0)
+  {
+    printf("Enter Positive Values\n");
+    return 1;
+  }
+  printf("Enter Elements :");
+  for(i=0; i<m; i++)
+  {
+    scanf("%d",&arr2[i]);
+  }
+  printf("Common Elements are:");
+  for(i = 0 ; i < n ; i++)
+  {
+    for(j=0; j<m; j++)
+    {
+      if(arr1[i]==arr2[j])
+      {
+        temp=1;
+        flag=0;
+        for(z=0; z<k; z++)
+        {
+          if(pri[z]==arr1[i])
+          {
+            temp=0;
+          }
+        }
+        if(temp)
+        {
+          printf("%d ",arr1[i]);
+          pri[k++]=arr1[i];
+        }
+      }
+    }
+  }
+  printf("\n");
+  if(flag)
+  {
+    printf("NO Common elments\n");
+  }
+  return 0;
+}
+```
+###
+```c
+Enter Number of elements first Array(<100): 5
+Enter Elements :1 2 3 4 5
+Enter Number of elements Second Array(<100): 5
+Enter Elements :1 -2 3 -4 -5
+Common Elements are:1 3
+```
+### 22. Find Missing 1 to n between Number in Array 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 22. Write a c program to Find Missing 1 to n between Number in Array    *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  int i=0,n,temp=0;
+  int arr[100];
+  printf("Enter Number of elements(<100): ");
+  scanf("%d",&n);
+  if(n<=0)
+  {
+    printf("Enter Positive Values\n");
+    return 1;
+  }
+  printf("Enter Elements :");
+  for(i=0;i<n; i++)
+  {
+    scanf("%d",&arr[i]);
+  }
+  temp;
+  for(i = 0 ; i < n ; i++)
+  {
+    if(temp==arr[i])
+    {
+      temp++;
+    }
+    else
+    {
+      printf("The Missing Number is %d ",temp);
+      temp++;
+      --i;
+    }
+  }
+  printf("\n");
+  return 0;
+}
+```
+### Output
+```c
+Enter Number of elements(<100): 6
+Enter Elements :1 3 5 7 9 10
+The Missing Number is:2 4 6 8
+```
+### 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 23. Write a c program to count number of Occurrence of each element   *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+
+int main(void)
+{
+  int arr[100],a[100]={0};
+  int i=0,j=0,count=0,n;
+  printf("Enter number of elements(<99): ");
+  scanf("%d", &n);
+  printf("Enter array elements: ");
+  for (i = 0; i < n; i++)
+  {
+    scanf("%d", &arr[i]);
+  }
+  for( i = 0; i < n; i++)
+  {
+    if(a[i]==1)
+    {
+      continue;
+    }
+    count=1;
+    for(j=i+1;j<n;j++)
+    {
+      if(arr[i]==arr[j])
+      {
+        count++;
+        a[j]=1;
+      }
+    }
+    printf("%d is %d times occurred\n",arr[i],count);
+  }
+  return 0;
+}
+```
+### Output
+```c
+Enter number of elements(<99): 5
+Enter array elements: 1 2 3 2 1
+1 is 2 times occurred
+2 is 2 times occurred
+3 is 1 times occurred
+```
