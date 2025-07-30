@@ -1022,7 +1022,7 @@ Enter Number of elements(<100): 6
 Enter Elements :1 3 5 7 9 10
 The Missing Number is:2 4 6 8
 ```
-### 
+### Count number of Occurrence of each element 
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * 23. Write a c program to count number of Occurrence of each element   *
