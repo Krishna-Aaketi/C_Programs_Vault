@@ -1022,7 +1022,7 @@ Enter Number of elements(<100): 6
 Enter Elements :1 3 5 7 9 10
 The Missing Number is:2 4 6 8
 ```
-### Count number of Occurrence of each element 
+### 23.Count number of Occurrence of each element 
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * 23. Write a c program to count number of Occurrence of each element   *
@@ -1068,4 +1068,82 @@ Enter array elements: 1 2 3 2 1
 1 is 2 times occurred
 2 is 2 times occurred
 3 is 1 times occurred
+```
+### 29. Print the elements of a 2D matrix in spiral order
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 29. Write a c program to print the elements of a 2D matrix in spiral order  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+#include<stdio.h>
+#define row 5
+#define col 5
+
+int main(void)
+{
+  int matrix[row][col],i=0,j=0,k,l;
+  printf("Enter the elements:\n");
+  for(int i=0;i<row;i++)
+  {
+    for(int j=0;j<col;j++)
+    {
+      scanf("%d",&matrix[i][j]);
+    }
+  }
+  while(i==0 && j!=col )
+  {
+    printf("%d->",matrix[i][j]);
+    j++;
+  }
+  j--;
+  i++;
+  while(i<=row-1)
+  {
+    printf("%d->",matrix[i][j]);
+    i++;
+  }
+  i--;
+  j--;
+  while(j>=0)
+  {
+    printf("%d->",matrix[i][j]);
+    j--;
+  }
+  j++;
+  i--;
+  while(i>=1)
+  {
+    printf("%d->",matrix[i][j]);
+    i--;
+  }
+  i++;
+  j++;
+  while(j!=col-1)
+  {
+    printf("%d->",matrix[i][j]);
+    j++;
+  }
+  j--;
+  i++;
+  while(j!=0)
+  {
+    if(j==1)
+    {
+      printf("%d\n",matrix[i][j]);
+    }
+    else
+    {
+      printf("%d->",matrix[i][j]);
+    }
+    j--;
+  }
+}
+```
+### Output
+```c
+Enter the elements:
+1  2  3  4
+5  6  7  8
+9  10 11 12
+13 14 15 16
+Spiral order:1->2->3->4->8->12->16->15->14->13->9->5->6->7->11->10
 ```
