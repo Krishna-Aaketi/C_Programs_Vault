@@ -1071,12 +1071,15 @@ Enter array elements: 1 2 3 2 1
 ```
 ### 29. Print the elements of a 2D matrix in spiral order
 ```c
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * 29. Write a c program to print the elements of a 2D matrix in spiral order  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+#if 0
+
 #include<stdio.h>
-#define row 5
-#define col 5
+#define row 4
+#define col 4
 
 int main(void)
 {
@@ -1089,6 +1092,7 @@ int main(void)
       scanf("%d",&matrix[i][j]);
     }
   }
+  printf("2D matrix in spiral order:");
   while(i==0 && j!=col )
   {
     printf("%d->",matrix[i][j]);
@@ -1137,6 +1141,75 @@ int main(void)
     j--;
   }
 }
+#endif
+
+#if 1
+
+#include <stdio.h>
+
+#define MAX 100
+
+int main(void)
+{
+  int matrix[MAX][MAX];
+  int row, col;
+  printf("Enter number of rows and columns (max %d): ", MAX);
+  scanf("%d%d", &row, &col);
+  if(row <= 0 || col <= 0 || row > MAX || col > MAX)
+  {
+    printf("Invalid dimensions!\n");
+    return 1;
+  }
+  // Input matrix elements
+  printf("Enter %d elements:\n", row * col);
+  for(int i = 0; i < row; i++)
+  {
+    for(int j = 0; j < col; j++)
+    {
+      scanf("%d", &matrix[i][j]);
+    }
+  }
+  // Spiral traversal
+  int top = 0, bottom = row - 1;
+  int left = 0, right = col - 1;
+  printf("Spiral order\n");
+  while(top <= bottom && left <= right)
+  {
+    for(int i = left; i <= right; i++)
+    {
+      printf("->");
+      printf("%d", matrix[top][i]);
+    }
+    top++;
+    for(int i = top; i <= bottom; i++)
+    {
+      printf("->")
+      printf("%d", matrix[i][right]);
+    }
+    right--;
+    if(top <= bottom)
+    {
+      for(int i = right; i >= left; i--)
+      {
+        printf("->");
+        printf("%d->", matrix[bottom][i]);
+      }
+      bottom--;
+    }
+    if(left <= right)
+    {
+      for (int i = bottom; i >= top; i--)
+      {
+        printf("->");
+        printf("%d->",matrix[i][left]);
+      }
+      left++;
+    }
+  }
+  return 0;
+}
+
+#endif
 ```
 ### Output
 ```c
