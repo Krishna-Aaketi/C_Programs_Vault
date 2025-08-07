@@ -1172,7 +1172,7 @@ int main(void)
   // Spiral traversal
   int top = 0, bottom = row - 1;
   int left = 0, right = col - 1;
-  printf("Spiral order\n");
+  printf("Spiral order");
   while(top <= bottom && left <= right)
   {
     for(int i = left; i <= right; i++)
@@ -1183,7 +1183,7 @@ int main(void)
     top++;
     for(int i = top; i <= bottom; i++)
     {
-      printf("->")
+      printf("->");
       printf("%d", matrix[i][right]);
     }
     right--;
@@ -1192,7 +1192,7 @@ int main(void)
       for(int i = right; i >= left; i--)
       {
         printf("->");
-        printf("%d->", matrix[bottom][i]);
+        printf("%d", matrix[bottom][i]);
       }
       bottom--;
     }
@@ -1201,7 +1201,7 @@ int main(void)
       for (int i = bottom; i >= top; i--)
       {
         printf("->");
-        printf("%d->",matrix[i][left]);
+        printf("%d",matrix[i][left]);
       }
       left++;
     }
