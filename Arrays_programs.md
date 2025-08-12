@@ -1069,6 +1069,255 @@ Enter array elements: 1 2 3 2 1
 2 is 2 times occurred
 3 is 1 times occurred
 ```
+### 24. Move zeros into one side in given array
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 24. Write a c program to move zeros into one side in given array      *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+
+int main(void)
+{
+  int arr[100];
+  int i=0,j=0,count=0,n;
+  printf("Enter number of elements(<99): ");
+  scanf("%d", &n);
+  if(n<1)
+  {
+    printf("please Enter Positive Numbers\n");
+    return 0;
+  }
+  printf("Enter array elements: ");
+  for (i = 0; i < n; i++)
+  {
+    scanf("%d", &arr[i]);
+  }
+  for( i = 0; i < n-count; i++)
+  {
+    if(arr[i]==0)
+    {
+      count++;
+      for(j=i;j<n-1;j++)
+      {
+        arr[j]=arr[j+1];
+      }
+      i--;
+      arr[n-1]=0;
+    }
+  }
+  for(j=0;j<n;j++)
+  {
+    printf("%d ",arr[j]);
+  }
+  printf("\n");
+  return 0;
+}
+```
+### Output
+```c
+Enter number of elements(<99): 10
+Enter array elements: 1 0 2 0 3 0 4 0 5 0
+1 2 3 4 5 0 0 0 0 0
+```
+### 25. Find pair given sum in given array
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 25. Write a C program to find pair given sum in given array       *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  int arr[100],sum=0,i=0,j=0,n=0;
+  printf("Enter Number of Element(100):");
+  scanf("%d",&n);
+  if(n<1)
+  {
+    printf("Enter positive Number\n");
+    return 0;
+  }
+  printf("Enter Element:");
+  for(i=0; i<n; i++)
+  {
+    scanf("%d",&arr[i]);
+  }
+  printf("Enter Sum value:");
+  scanf("%d",&sum);
+  for(i=0; i<n-1; i++)
+  {
+    for(j=i+1; j<n; j++)
+    {
+      if((arr[i]+arr[j])== sum)
+      {
+        printf("the first pair is (%d,%d)\n",arr[i],arr[j]);
+        return 0;
+      }
+    }
+  }
+  return 0;
+}
+```
+### Output
+```c
+Enter Number of Element(100):5
+Enter Element:1 2 3 4 5
+Enter Sum value:4
+the first pair is (1,3)
+```
+### 26. Find union and interset in given two arrays
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 26. Write a c program to find union and interset in given two arrays  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+
+int main(void)
+{
+  int arr1[100], arr2[100], uni[200], inter[100];
+  int m, n, i, j, k = 0,x, count = 0,found;
+  printf("Enter number of elements in arr1: ");
+  scanf("%d", &m);
+  if (m < 1)
+  {
+    printf("Enter positive size\n");
+    return 0;
+  }
+  printf("Enter %d elements for arr1: ", m);
+  for (i = 0; i < m; i++)
+  {
+    scanf("%d", &arr1[i]);
+  }
+  printf("Enter number of elements in arr2: ");
+  scanf("%d", &n);
+  if (n < 1)
+  {
+    printf("Enter positive size\n");
+    return 0;
+  }
+  printf("Enter %d elements for arr2: ", n);
+  for (i = 0; i < n; i++)
+  {
+    scanf("%d", &arr2[i]);
+  }
+  for (i = 0; i < m; i++)
+  {
+    uni[k++] = arr1[i];
+  }
+  for (i = 0; i < n; i++)
+  {
+    found = 0;
+    for(j = 0; j < k; j++)
+    {
+      if(arr2[i] == uni[j])
+      {
+        found = 1;
+        break;
+      }
+    }
+    if(!found)
+    {
+       uni[k++] = arr2[i];
+    }
+  }
+  for(i = 0; i < m; i++)
+  {
+    for(j = 0; j < n; j++)
+    {
+      if(arr1[i] == arr2[j])
+      {
+        found = 0;
+        for(x = 0; x < count; x++)
+        {
+          if (inter[x] == arr1[i])
+          {
+            found = 1;
+            break;
+          }
+        }
+        if(!found)
+        {
+          inter[count++] = arr1[i];
+          break;
+        }
+      }
+    }
+  }
+  printf("\nUnion: ");
+  for (i = 0; i < k; i++)
+  {
+    printf("%d ", uni[i]);
+  }
+  printf("\nIntersection: ");
+  for(i = 0; i < count; i++)
+  {
+    printf("%d ", inter[i]);
+  }
+  printf("\n");
+  return 0;
+}
+
+```
+### Output
+```c
+Enter number of elements in arr1: 6
+Enter 6 elements for arr1: 1 2 3 4 5 6
+Enter number of elements in arr2: 5
+Enter 5 elements for arr2: 0 6 7 8 5
+
+Union: 1 2 3 4 5 6 0 7 8
+Intersection: 5 6
+```
+### 27. Sort Binary array (0s,1s) in one pass 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 27. Write a C program to sort Binary array (0s,1s) in one pass    *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  int arr[100],n,i=0,j=0,temp=0;
+  printf("Enter number of Elements:");
+  scanf("%d",&n);
+  printf("Enter  Elements:");
+  for( i = 0; i < n; i++)
+  {
+    scanf("%d",&arr[i]);
+  }
+  for(i=0; i<n; i++)
+  {
+    for(j=1; j<n; j++)
+    {
+      if(arr[j-1] >arr[j])
+      {
+        temp=arr[j];
+        arr[j]=arr[j-1];
+        arr[j-1]=temp;
+      }
+    }
+  }
+  for(i=0; i<n; i++)
+  {
+    printf("%d ",arr[i]);
+  }
+  printf("\n");
+  return 0;
+}
+```
+### Output
+```c
+Enter number of Elements:8
+Enter  Elements:1 0 1 0 1 0 1 0
+0 0 0 0 1 1 1 1
+```
+### 28. 
+```c
+
+```
 ### 29. Print the elements of a 2D matrix in spiral order
 ```c
 
@@ -1219,4 +1468,241 @@ Enter the elements:
 9  10 11 12
 13 14 15 16
 Spiral order:1->2->3->4->8->12->16->15->14->13->9->5->6->7->11->10
+```
+### 30. Find Most majority element in given array
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 30. Write a C program to find Most majority element in given array  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  int arr[100],i=0,count=0,temp=0,k=0,j=0,num=0;
+  printf("Enter Number of Elements:\n");
+  scanf("%d",&num);
+  if(num<=0)
+  {
+    printf("Enter Positive Numbers only\n");
+    return 0;
+  }
+  printf("Enter Elements:\n");
+  for(i=0; i<num; i++)
+  {
+    scanf("%d",&arr[i]);
+  }
+  for(i=0; i<num; i++)
+  {
+    if(arr[i]==arr[k] && i != 0)
+    {
+      continue;
+    }
+    for(j=i+1; j<num; j++)
+    {
+      if(arr[i]==arr[j])
+      {
+        count++;
+      }
+    }
+    if(temp<count)
+    {
+      temp=count;
+      k=i;
+    }
+  }
+  printf("The most mojority Element %d is repeated in %d times\n",arr[k],++temp);
+  return 0;
+}
+```
+### Output
+```c
+Enter Number of Elements:
+6
+Enter Elements:
+1 1 1 2 3 2
+The most mojority Element 2 is repeated in 4 times
+```
+### 31. Rotate Given Array Using Reversal Algorithm
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 31. Write a c program to Rotate Given Array Using Reversal Algorithm      *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+void reverse(int arr[], int start, int end);
+
+int main(void)
+{
+  int i=0,n=0,k=0,j=0;
+  int arr[100],a[50];
+  printf("Enter Number of elements(<100): ");
+  scanf("%d",&n);
+  printf("Enter Elements :");
+  for(i=0;i<n; i++)
+  {
+    scanf("%d",&arr[i]);
+  }
+  printf("Enter kth position:");
+  scanf("%d",&k);
+  if(n<k)
+  {
+    printf("K value is greaterthen n value\n");
+    return 0;
+  }
+  // Step 1: Reverse first k elements
+  reverse(arr, 0, k - 1);
+
+  // Step 2: Reverse remaining n-k elements
+  reverse(arr, k, n - 1);
+
+  // Step 3: Reverse entire array
+  reverse(arr, 0, n - 1);
+  for(i=0;i<n; i++)
+  {
+    printf("%d ",arr[i]);
+  }
+  printf("\n");
+  return 0;
+}
+
+void reverse(int arr[], int start, int end)
+{
+  while(start < end)
+  {
+    int temp = arr[start];
+    arr[start] = arr[end];
+    arr[end] = temp;
+    start++;
+    end--;
+  }
+}
+```
+### Output
+```c
+Enter Number of elements(<100): 5
+Enter Elements :1 2 3 4 5
+Enter kth position:3
+3 4 5 1 2
+```
+### 32. Find Maximum subarray sum using kadane's algorithm 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 32. Write a c program to  find Maximum subarray sum using kadane's algorithm  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int kadane(int arr[], int n);
+
+int main(void)
+{
+  int t,n=0,i=0,arr[100];
+  printf("Enter Number of elements:");
+  scanf("%d", &n);
+  printf("Enter %d elements: ", n);
+  for(i = 0; i < n; i++)
+  {
+    scanf("%d", &arr[i]);
+  }
+  printf("Maximum Subarray Sum = %d\n", kadane(arr, n));
+  return 0;
+}
+
+int kadane(int arr[], int n)
+{
+  int max = arr[0];
+  int i=0,curr_max = arr[0];
+  for(i=1; i<n;i++)
+  {
+    curr_max = (arr[i] > curr_max + arr[i]) ? arr[i] : curr_max + arr[i];
+    max = (max > curr_max) ? max : curr_max;
+  }
+  return max;
+}
+```
+### Output
+```c
+Enter Number of elements:6
+Enter 6 elements: -1 -2 -3 -4 5 6
+Maximum Subarray Sum = 11
+```
+### 33. Search element in rotated sorted array
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 33. Write a C program to Search element in rotated sorted array   *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  int arr[100],num=0,i=0,target=0;
+  printf("Enter Number of Elements:");
+  scanf("%d",&num);
+  printf("Enter Elements:");
+  for(i=0;i<num;i++)
+  {
+    scanf("%d",&arr[i]);
+  }
+  printf("Enter Target Elements:");
+  scanf("%d",&target);
+  for(i=0;i<num; i++)
+  {
+    if(arr[i]==target)
+    {
+      printf("The Index of Target Element is %d\n",i);
+      break;
+    }
+  }
+  return 0;
+}
+```
+### Output
+```c
+Enter Number of Elements:6
+Enter Elements:1 3 6 9 5 7
+Enter Target Elements:9
+The Index of Target Element is 3
+```
+### 34. Find maximum diff between two elements
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 34. Write a c program to find maximum diff between two elements   *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  int arr[50],i=0,max,min,num;
+  printf("Enter Number of Elements:");
+  scanf("%d",&num);
+  printf("Enter Elements:");
+  for(i=0; i<num; i++)
+  {
+    scanf("%d",&arr[i]);
+  }
+  max=min=arr[0];
+  for(i=0;i<num;i++)
+  {
+    if(max<arr[i])
+    {
+      max=arr[i];
+    }
+    else if(min<arr[i])
+    {
+      min=arr[i];
+    }
+  }
+  printf("Maximum difference Between (%d-%d)=%d\n",max,min,(max-min));
+  return 0;
+}
+```
+### Output
+```c
+Enter Number of Elements:6
+Enter Elements:-1 2 4 6 8 10
+Maximum difference Between (10--1)=11
 ```
