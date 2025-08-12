@@ -1355,3 +1355,211 @@ int main(void)
 Enter String(<100):KriSHna AAkETi
 The Toggle String is kRIshNA aaKetI
 ```
+### 32. Remove Characters Except Alphabets
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 32. Write a C program to Remove Characters Except Alphabets *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#if 1
+#include<stdio.h>
+#include<string.h>
+
+int main(void)
+{
+  char str[100];
+  int i=0,j=0;
+  printf("Enter a string(<99):\n");
+  fgets(str,99,stdin);
+  str[strcspn(str,"\n")]='\0';
+  while(str[i])
+  {
+    if((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z'))
+    {
+      str[j]=str[i];
+      j++;
+    }
+    i++;
+  }
+  str[j]='\0';
+  printf("The string is %s\n",str);
+  return 0;
+}
+
+#endif
+
+#if 0
+
+#include<stdio.h>
+#include<string.h>
+void main(void)
+{
+ char str[20];
+ int j=0;
+ printf("Enter the string:\n");
+ scanf("%[^\n]",str);
+ for(int i=0;i<strlen(str);i++)
+ {
+   if(str[i]==' ')
+   {
+     j=i;
+     while(str[j] && str[j+1] != '\0')
+     {
+       str[j]=str[j+1];
+       j++;
+     }
+   }
+
+ }
+ printf("The string is %s\n",str);
+}
+#endif
+```
+### Output
+```c
+Enter a string(<99):
+krish-na, .aaketi
+The string is krishnaaaketi
+```
+### 33. Check given string is contains number or not
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 33. Write a c program to check given string is contains number or not *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  char str[100],i=0,flag=0;
+  printf("Enter String(<100):");
+  scanf("%s",str);
+  while(str[i])
+  {
+    if((str[i] >= '0' && str[i] <='9') )
+    {
+      flag=1;
+    }
+    else
+    {
+      flag=0;
+      break;
+    }
+    i++;
+  }
+  if(flag==1)
+  {
+    printf("Yes, Given string is contains numbers\n");
+  }
+  else
+  {
+    printf("No, Given string is contains Non- Numaric characters\n");
+  }
+  return 0;
+}
+```
+### Output
+```c
+Enter String(<100):12345
+Yes, Given string is contains numbers
+```
+### 35. check given string2 is rotation of string1
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 35. Write a C program to check given string2 is rotation of string1 *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<string.h>
+
+int main(void)
+{
+  char str1[100],str2[100];
+  int i=0,j=0,flag=0,len=0;
+  printf("Enter string 1:");
+  scanf("%s",str1);
+  printf("Enter String 2:");
+  scanf("%s",str2);
+  len=strlen(str1);
+  if(len==strlen(str2))
+  {
+    while(str2[i]!=str1[0])
+    {
+      i++;
+    }
+    while(len--)
+    {
+      if(str2[i]=='\0')
+      {
+        i=0;
+      }
+      else if(str2[i]==str1[j])
+      {
+        flag=1;
+        j++;
+        i++;
+      }
+      else
+      {
+        flag=0;
+        break;
+      }
+    }
+  }
+  else
+  {
+    flag=0;
+  }
+  if(flag==0)
+  {
+    printf("string 2 is not Rotation of string 1\n");
+  }
+  else
+  {
+    printf("String 2 is Rotation of string 1\n");
+  }
+  return 0;
+}
+```
+### Output
+```c
+Enter string 1:krishna
+Enter String 2:hnakris
+String 2 is Rotation of string 1
+```
+### 36. Remove all Vowels from a given string
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 36. Write a c Program to Remove all Vowels from a given string    *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<string.h>
+
+int main(void)
+{
+  char str[100];
+  int i=0,j=0;
+  printf("Enter String(<99):");
+  fgets(str,99,stdin);
+  str[strcspn(str,"\n")]='\0';
+  while(str[i])
+  {
+    if(!((str[i] =='a' || str[i] =='e' || str[i]=='i' || str[i]=='o' || str[i]=='u') ||
+       (str[i] =='A' || str[i] =='E' || str[i]=='I' || str[i]=='O' || str[i]=='U')))
+    {
+      str[j]=str[i];
+      j++;
+    }
+    i++;
+  }
+  str[j]='\0';
+  printf("The String is :%s\n",str);
+  return 0;
+}
+```
+### Output
+```c
+Enter String(<99):krishnaaaketi
+The String is :krshnkt
+```
