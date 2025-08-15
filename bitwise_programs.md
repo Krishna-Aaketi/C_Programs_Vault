@@ -969,3 +969,471 @@ Enter Elements
 1 2 3 4 5
 first non repeated element=1
 ```
+### 32. Add two number using bit-wise operators
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 32. Write a C program to add two number using bit-wise operators  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  int a,b,carry=0;
+  printf("Enter a,b:");
+  scanf("%d%d",&a,&b);
+#if 1
+  while(b)
+  {
+    carry=a & b;
+    a = a ^ b;
+    b = carry<<1;
+  }
+#endif
+  printf("sum=%d\n",a);
+  return 0;
+}
+```
+### Output
+```c
+Enter a,b:3 7
+sum=10
+```
+### 33. Add one to number using bit-wise operators 
+```c
+
+```
+### Output
+```c
+
+```
+### 34. Find all elements of XOR value in given elements
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 34. write a c Program to find all elements of XOR value in given elements   *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+
+int main(void)
+{
+  int arr[100],n,res=0,i=0;
+  printf("Enter Number:");
+  scanf("%d",&n);
+  printf("Enter Elements\n");
+  for(i=0; i<n; i++)
+  {
+    scanf("%d",&arr[i]);
+  }
+  for(i=0; i<n; i++)
+  {
+    res ^=arr[i];
+  }
+  printf("All elements XOR value=%d\n",res);
+  return 0;
+}
+```
+### Output
+```c
+Enter Number:5
+Enter Elements
+10 20 30 40 50
+All elements XOR value=26
+```
+### 35. Check Parity of Given Number (Odd_or_even_bits) 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 35. Write a c program to Check Parity of Given Number (Odd_or_even_bits)  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+
+int main(void)
+{
+  int num=0,even=0,odd=0;
+  printf("Enter Number:");
+  scanf("%d",&num);
+  if(num>0)
+  {
+    while(num)
+    {
+      if(num & 1 )
+      {
+  even++;
+      }
+      else
+      {
+        odd++;
+      }
+      num >>= 1;
+    }
+    if(even==odd)
+    {
+      printf("Even and Odd Bits are Equal\n");
+    }
+    else
+    {
+      (even > odd) ? printf("Even bits=%d\n",even) : printf("Odd bits=%d\n",odd);
+    }
+  }
+  else
+  {
+    printf("Enter Positive Number\n");
+  }
+  return 0;
+}
+```
+### Output
+```c
+Enter Number:12
+Even and Odd Bits are Equal
+
+Enter Number:7
+Even bits=3
+```
+### 36. Clear All MSB bits given bit position
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 36. Write a c program to clear All MSB bits given bit position  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+
+int main(void)
+{
+    int num,n,mask;
+    printf("Enter Number:");
+    scanf("%d",&num);
+    if(n<1)
+    {
+      printf("Enter Positive Numbers\n");
+      return 0;
+    }
+    printf("Enter position:");
+    scanf("%d",&n);
+    mask= ((((unsigned)1)<<(n))-1);
+    num &= mask;
+    printf("After number is=%d\n",num);
+    return 0;
+}
+```
+### Output
+```c
+Enter Number:7
+Enter position:1
+After number is=1
+```
+### 37. Find right most bit position given number
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 37. Write a c program to find right most bit position given number  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+
+int main(void)
+{
+  int num,position=0;
+  printf("Enter Number:");
+  scanf("%d",&num);
+  if(num<1)
+  {
+    printf("Enter Positive Numbers\n");
+    return 0;
+  }
+  while(num)
+  {
+    if(num&1)
+    {
+      printf("Right most position=%d\n",position);
+      break;
+    }
+    position++;
+    num >>= 1;
+  }
+  return 0;
+}
+```
+### Output
+```c
+Enter Number:16
+Right most position=4
+```
+### 38. Given number is sparse or not 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 38. Write a c prograam to given number is sparse or not     *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  int num=0,flag=0;
+  printf("Enter Positive number:\n");
+  scanf("%d",&num);
+  if(num<2)
+  {
+    printf("Enter above 1 value\n");
+    return 0;
+  }
+  while(num)
+  {
+    if((num & 1) && ((num >>1)&1))
+    {
+      flag=1;
+      break;
+    }
+    num >>= 1;
+  }
+  if(flag==1)
+  {
+    printf("Given Number is not Sparse\n");
+  }
+  else
+  {
+    printf("Given Number is Sparse\n");
+  }
+  return 0;
+}
+```
+### Output
+```c
+Enter Positive number:
+10
+Given Number is Sparse
+
+Enter Positive number:
+15
+Given Number is not Sparse
+```
+### 39. Subtract two number using bit-wise operators
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 39. Write a C program to subtract two number using bit-wise operators   *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  int a,b,carry=0;
+  printf("Enter a,b:");
+  scanf("%d%d",&a,&b);
+  while(b)
+  {
+    carry=(~a) & b;
+    a = a ^ b;
+    b = carry<<1;
+  }
+  printf("subtraction=%d\n",a);
+  return 0;
+}
+```
+### Output
+```c
+Enter a,b:5 9
+subtraction=-4
+```
+### 40. Multiple two variables using bitwise operators 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 40. Write a c program to multiple two variables using bitwise operators *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  int a,b,result=0,sign=1;
+  printf("Enter the numbers:\n");
+  scanf("%d%d",&a,&b);
+  result = 0;
+  if(b<0)
+  {
+    sign=-1;
+  }
+  while( b > 0)
+  {
+    if(b & 1)
+    {
+      result += a;
+    }
+    a <<= 1;
+    b >>= 1;
+  }
+  printf("mul = %d\n",result);
+  return 0;
+}
+```
+### Output
+```c
+Enter the numbers:
+5 2
+mul = 10
+```
+### 41. Count bits to flip to convert Number A to Number B
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 41. Write a C program to Count bits to flip to convert Number A to Number B *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  int a,b,count=0;
+  printf("Enter a,b:");
+  scanf("%d%d",&a,&b);
+  while(a || b)
+  {
+    if((a & 1) != (b & 1))
+    {
+      count++;
+    }
+    a >>=1;
+    b >>=1;
+  }
+  printf("%d bits need to be flipped\n",count);
+  return 0;
+}
+```
+### Output
+```c
+Enter a,b:15 10
+2 bits need to be flipped
+```
+### 42. Fast Exponentiation( power of x^y using bits)
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 42. Write a c program to Fast Exponentiation( power of x^y using bits)  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  int x,y,temp,result=1;
+  printf("Enter X,Y:");
+  scanf("%d%d",&x,&y);
+  temp=x;
+  while(y)
+  {
+    if(y & 1)
+    {
+      result *=temp;
+    }
+    temp *= temp;
+    y >>= 1;
+  }
+  printf("Power Of x^y=%d\n",result);
+  return 0;
+}
+```
+### Output
+```c
+Enter X,Y:2 10
+Power Of x^y=1024
+```
+### 43. Implement XOR using ~and & operators
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 43. Write a c Program to implement XOR using ~and & operators     *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  int a,b,result=0;
+  printf("Enter a,b:");
+  scanf("%d%d",&a,&b);
+  result =~(~(~a & b) & ~(a & ~b));
+  printf("a ^ b = %d\n",result);
+  return 0;
+}
+```
+### Output
+```c
+Enter a,b:10 5
+a ^ b = 15
+```
+### 44. check given number is power of 4 or not
+```c
+
+```
+### Output
+```c
+
+```
+### 45. Toggle All bits up to the Most significant bits
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 45. Write a C  program to Toggle All bits up to the Most significant bits *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  unsigned int num,mask,temp,msb=0;
+  printf("Enter Positive integers:");
+  scanf("%d",&num);
+  if(num<0)
+  {
+    printf("Enter Positive Numbers\n");
+    return 0;
+  }
+  temp=num;
+  while(temp)
+  {
+    msb++;
+    temp >>=1;
+  }
+  mask=((1U << msb)-1);
+  num ^= mask;
+  printf("Toggle number is %d\n",num);
+  return 0;
+}
+```
+### Output
+```c
+Enter Positive integers:10
+Toggle number is 5
+```
+### 46. Check all bits are set or not in given number 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 46. Write a C program to Check all bits are set or not in given number  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  int num;
+  printf("Enter Positive number:");
+  scanf("%d",&num);
+  if(num<1)
+  {
+    printf("Enter Positive Number\n");
+    return 0;
+  }
+  while(num)
+  {
+    if((num & 1) == 0)
+    {
+      printf("Given number not all bits are Set\n");
+      return 0;
+    }
+    num >>= 1;
+  }
+  printf("Given number all bits are Set\n");
+  return 0;
+}
+```
+### Output
+```c
+Enter Positive number:15
+Given number all bits are Set
+```
