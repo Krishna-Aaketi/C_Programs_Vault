@@ -1437,3 +1437,35 @@ int main(void)
 Enter Positive number:15
 Given number all bits are Set
 ```
+### 47. Reverse n Bits from LSB in given number 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 47. Write a c Program to Reverse n Bits from LSB in given number  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  unsigned int num,n,i=0,result=0;
+  printf("Enter Number:");
+  scanf("%d",&num);
+  printf("Enter n bits:");
+  scanf("%d",&n);
+  while(i<n)
+  {
+    result <<= 1;
+    result |=(num&1);
+    num >>= 1;
+    i++;
+  }
+  printf("The Reverse Number is %d\n",result);
+  return 0;
+}
+```
+### Output
+```c
+Enter Number:13
+Enter n bits:4
+The Reverse Number is 11
+```
