@@ -1750,5 +1750,64 @@ int main(void)
 ```
 ### Output
 ```c
+Enter Number of Elements:7
+Enter element:10 5 15 18 11 20 25
+The length of Subsquence is =5
+10 15 18 20 25
+```
+### 36. Find the median element in given an array
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 36. Write a c Program to Find the median element in given an array  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#include<stdio.h>
+
+int main(void)
+{
+  int arr[100],i=0,j=0,num=0,temp;
+  printf("Enter Number of Element:");
+  scanf("%d",&num);
+  if(num<1)
+  {
+    printf("Enter Positive Number:");
+    return 0;
+  }
+  for(i=0 ; i < num; i++)
+  {
+    scanf("%d",&arr[i]);
+  }
+  for(i=0; i < num; i++)
+  {
+    for(j=1; j < num-i; j++)
+    {
+      if(arr[j]<arr[j-1])
+      {
+        temp=arr[j-1];
+        arr[j-1]=arr[j];
+        arr[j]=temp;
+      }
+    }
+  }
+  temp=num/2;
+  if(num%2==0)
+  {
+    printf("the median value=%.1f\n",(float)((arr[temp]+arr[temp-1])/2));
+  }
+  else
+  {
+    printf("the median value=%d\n",arr[temp]);
+  }
+  return 0;
+}
+```
+### Output
+```c
+Enter Number of Element:4
+10 40 30 20
+the median value = 30.0
+
+Enter Number of Element:4
+10 40 30 20
+the median value = 25.0
 ```
