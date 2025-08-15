@@ -1463,6 +1463,53 @@ int main(void)
 Enter String(<100):12345
 Yes, Given string is contains numbers
 ```
+### 34. Remove characters of second string from first string 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 34. Write a c program to Remove characters of second string from first string *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<string.h>
+
+int main(void)
+{
+  char str1[100],str2[100];
+  int i=0,j=0,k=0,flag=0;
+  printf("Enter string 1:");
+  fgets(str1,99,stdin);
+  str1[strcspn(str1,"\n")]='\0';
+  printf("Enter string 2:");
+  fgets(str2,99,stdin);
+  str2[strcspn(str2,"\n")]='\0';
+  while(str1[i])
+  {
+    flag=0;
+    for(j=0; str2[j]; j++)
+    {
+      if(str1[i]==str2[j])
+      {
+        flag=1;
+        break;
+      }
+    }
+    if(!flag)
+    {
+      str1[k++]=str1[i];
+    }
+    i++;
+  }
+  str1[k]='\0';
+  printf("%s\n",str1);
+  return 0;
+}
+```
+### Output
+```c
+Enter string 1:krishna
+Enter string 2:hema
+krisn
+```
 ### 35. check given string2 is rotation of string1
 ```c
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -1562,4 +1609,316 @@ int main(void)
 ```c
 Enter String(<99):krishnaaaketi
 The String is :krshnkt
+```
+### 37. Find most occurs character in given string 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 37. Write a c Program to find most occurs character in given string *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<string.h>
+
+int main(void)
+{
+  char str[100],arr[256]={0};
+  int i=0,j=0,temp=0;
+  printf("Enter String:");
+  scanf("%[^\n]",str);
+  while(str[i])
+  {
+    arr[str[i]] +=1;
+    i++;
+  }
+  i=0;
+  temp=0;
+  while(i<256)
+  {
+    if(temp<arr[i])
+    {
+      temp=arr[i];
+      j=i;
+    }
+    i++;
+  }
+  if(temp==1)
+  {
+    printf("All are equal\n");
+  }
+  else
+  {
+    i=0;
+    while(i<256)
+    {
+      if(temp==arr[i])
+        printf("first occurs character is %c is %d time\n",i,temp);
+      i++;
+    }
+  }
+  return 0;
+}
+```
+### Output
+```c
+Enter String:krishna
+All are equal
+
+Enter String:aaketi
+first occurs character is a is 2 time
+```
+### 38. Replace vowels with next character in given string
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 38. Write a C program to Replace vowels with next character in given string *                                                                 *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<string.h>
+
+int main(void)
+{
+  char str[100];
+  int i=0;
+  printf("Enter String(<99):");
+  fgets(str,99,stdin);
+  str[strcspn(str,"\n")]='\0';
+  while(str[i])
+  {
+    if((str[i]=='a' || str[i]=='e' || str[i]=='i' || str[i]=='o' || str[i]=='u') ||
+        (str[i]=='A' || str[i]=='E' || str[i]=='I' || str[i]=='O' || str[i]=='U'))
+    {
+      str[i] += 1;
+    }
+    i++;
+  }
+  printf("The String is %s\n",str);
+  return 0;
+}
+```
+### Output
+```c
+Enter String(<99):krishna aaketi
+The String is krjshnb bbkftj
+```
+### 39. Find longest word in given string
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 39. Write a c program to find longest word length in given string   *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<string.h>
+
+int main(void)
+{
+  char str[100];
+  int i=0,temp=0,len=0,result=0;
+  printf("Enter String(<99):");
+  fgets(str,99,stdin);
+  str[strcspn(str,"\n")]='\0';
+  while(str[i])
+  {
+    len++;
+    if(str[i]==' ' || str[i]=='.' || str[i]==',' || str[i]=='\n')
+    {
+      temp=--len;
+      len=0;
+    }
+    else if(str[i+1]=='\0')
+    {
+      temp=len;
+    }
+    if(result<temp)
+    {
+      result=temp;
+    }
+    i++;
+  }
+  printf("The Longest Word length is %d\n",result);
+  return 0;
+}
+```
+### Output
+```c
+Enter String(<99):krishna aaketi he is a programmer
+The Longest Word length is 10
+```
+### 40. Remove punctuation form given string 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 40. Write a c program to Remove punctuation form given string     *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<string.h>
+
+int main(void)
+{
+  char str[100];
+  int i=0;
+  printf("Enter String(<99):");
+  fgets(str,99,stdin);
+  str[strcspn(str,"\n")]='\0';
+  while(str[i])
+  {
+    if((str[i]>= 0 && str[i]<=64) || (str[i]>=91 && str[i]<=96) || (str[i]>=123 && str[i]<=127))
+    {
+      str[i]=' ';
+    }
+    i++;
+  }
+  printf("The String is %s\n",str);
+  return 0;
+}
+```
+### Output
+```c
+Enter String(<99):krishna, aaketi.&he*is(programmer#
+The String is krishna  aaketi  he is programmer
+```
+### 41. Find all characters are unique or not 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 41. Write a C program to find all characters are unique or not    *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<string.h>
+
+int main(void)
+{
+  char str[100];
+  int i=0,flag=0,j=0;
+  printf("Enter String(<99):");
+  scanf("%s",str);
+  while(str[i])
+  {
+    for(j=i+1; str[j] ; j++)
+    {
+      if(str[i]==str[j])
+      {
+        flag=1;
+        break;
+      }
+    }
+    if(flag==1)
+    {
+      printf("Given string is not a characters are Unique\n ");
+      break;
+    }
+    i++;
+  }
+  if(flag==0)
+  {
+    printf("Given string is unique of all character\n ");
+  }
+  return 0;
+}
+```
+### Output
+```c
+Enter String(<99):krishna
+Given string is unique of all character
+
+Enter String(<99):aaketi
+Given string is not a characters are Unique
+```
+### 42. Find Compress a string (Run-length Encoding) 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 42. Write a c program to find Compress a string (Run-length Encoding) *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+  char str[50];
+  int i = 0, count = 0;
+  printf("Enter string (<50): ");
+  scanf("%s", str);
+  while(str[i])
+  {
+    count = 1;
+    while(str[i] == str[i + 1])
+    {
+      count++;
+      i++;
+    }
+    printf("%c%d", str[i], count);
+    i++;
+  }
+  printf("\n");
+  return 0;
+}
+```
+### Output
+```c
+Enter string (<50): krishna
+k1r1i1s1h1n1a1
+
+Enter string (<50): aaketi
+a2k1e1t1i1
+```
+### 43. Print all permutations of a string 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 43. Write a C program to Print all permutations of a string   *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<string.h>
+
+void permute(char *str, int l, int r);
+
+int main(void)
+{
+  char str[100];
+  int len=0;
+  printf("Enter string(<99):");
+  scanf("%s",str);
+  len=strlen(str);
+  permute(str,0,len-1);
+  return 0;
+}
+
+void permute(char str[],int l,int r)
+{
+  char temp;
+  int i;
+  if(l==r)
+  {
+    printf("%s\n", str);
+    return;
+  }
+  for(i = l; i <= r; i++)
+  {
+    temp=str[l];
+    str[l]=str[i];
+    str[i]=temp;
+    permute(str, l + 1, r);
+    temp=str[l];
+    str[l]=str[i];
+    str[i]=temp;
+  }
+}
+```
+### Output
+```c
+Enter string(<99):ABC
+ABC
+ACB
+BAC
+BCA
+CBA
+CAB
+```
+###
+```c
+
+```
+###
+```c
+
 ```
