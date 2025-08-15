@@ -1706,3 +1706,49 @@ Enter Number of Elements:6
 Enter Elements:-1 2 4 6 8 10
 Maximum difference Between (10--1)=11
 ```
+### 35. Find longest subsquence in given array
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 35. Write a C program to find longest subsquence in given array   *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  int arr[20],i=0,j=0,max=0,count=0,num;
+  printf("Enter Number of Elements:");
+  scanf("%d",&num);
+  if(num<0)
+  {
+    perror("Enter Positive");
+    return 0;
+  }
+  printf("Enter element:");
+  for(i=0; i<num; i++)
+  {
+    scanf("%d",&arr[i]);
+  }
+  for(i=0;i<num;i++)
+  {
+    if(max<arr[i] || arr[0]==0)
+    {
+      arr[j]=arr[i];
+      max=arr[i];
+      count++;
+      j++;
+    }
+  }
+  printf("The length of Subsquence is =%d\n",count);
+  for(i=0; i<count; i++)
+  {
+    printf("%d ",arr[i]);
+  }
+  printf("\n");
+  return 0;
+}
+```
+### Output
+```c
+
+```
