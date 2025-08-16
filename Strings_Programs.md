@@ -1914,11 +1914,65 @@ BCA
 CBA
 CAB
 ```
+### 44. Check given string is palindrome or not skip spacess 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 44. Write a C program to Check given string is palindrome or not skip spacess   *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+#include<string.h>
+
+int main(void)
+{
+  char str[100];
+  int i=0,len=0,flag=0,j=0;
+  printf("Enter String(<99):");
+  fgets(str,99,stdin);
+  str[strcspn(str,"\n")]='\0';
+  while(str[i])
+  {
+    if(str[i] !=' ')
+    {
+      str[j++]=str[i];
+    }
+    i++;
+  }
+  str[j]='\0';
+  len=strlen(str);
+  for(j=0; j<=len; j++)
+  {
+    if(str[j]==str[--len])
+    {
+      flag=1;
+    }
+    else
+    {
+      flag=0;
+      break;
+    }
+  }
+  if(flag==1)
+  {
+    printf("Given string is palindrome\n");
+  }
+  else
+  {
+    printf("Given string is not palindrome\n");
+  }
+  return 0;
+}
+```
+### Output
+```c
+Enter String(<99):never odd or even
+Given string is palindrome
+```
 ###
 ```c
 
 ```
-###
+### Output
 ```c
 
 ```
