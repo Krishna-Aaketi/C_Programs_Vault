@@ -1811,3 +1811,45 @@ Enter Number of Element:4
 10 40 30 20
 the median value = 25.0
 ```
+### 37. Find smallest positive missing number 
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 37. Write a c program to Find smallest positive missing number    *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  int arr[100],i=0,temp=0,num;
+  printf("Enter Number of Element:");
+  scanf("%d",&num);
+  if(num<1)
+  {
+    printf("Enter positive Numbers\n");
+    return 1;
+  }
+  printf("Enter elements:");
+  for(i=0; i<num; i++)
+  {
+    scanf("%d",&arr[i]);
+  }
+  temp=1;
+  for(i=0; i<num; i++)
+  {
+    if(temp==arr[i])
+    {
+      temp += 1;
+      i=-1;
+    }
+  }
+  printf("The Missing positive Number is %d\n",temp);
+  return 0;
+}
+```
+### Output
+```c
+Enter Number of Element:5
+Enter elements:0 2 3 5 1
+The Missing positive Number is 4
+```
