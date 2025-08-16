@@ -1469,3 +1469,37 @@ Enter Number:13
 Enter n bits:4
 The Reverse Number is 11
 ```
+### 48. Count total set bits from 1 to N in given number
+```c
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 48.Write a c program to Count total set bits from 1 to N in given number  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include<stdio.h>
+
+int main(void)
+{
+  int num,i=0,temp=0,count=0;
+  printf("Enter Number:");
+  scanf("%d",&num);
+  for(i=1; i<=num; i++)
+  {
+    temp=i;
+    while(temp)
+    {
+      if(temp & 1)
+      {
+        count++;
+      }
+      temp >>= 1;
+    }
+  }
+  printf("Total set bits from 1 To %d is %d\n",num,count);
+  return 0;
+}
+```
+### Output
+```c
+Enter Number:5
+Total set bits from 1 To 5 is 7
+```
