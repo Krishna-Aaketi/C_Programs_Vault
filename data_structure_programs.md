@@ -13,6 +13,90 @@ int4_t add_at_begining(sll_t **pphead,int4_t data)
   *pphead=pnew;
 }
 ```
+### 02. Display Single Linked list
+```c 
+void0_t display(sll_t *phead)
+{
+  sll_t *ptemp=phead;
+  while(ptemp!=NULL)
+  {
+   printf("%d\n",ptemp->data);
+   ptemp=ptemp->pnext;
+  }
+}
+```
+### 03. Add a Node at N position in Single Linked list 
+```c
+int4_t addN(sll_t **pphead,int4_t n,int4_t data)
+{
+  sll_t *ptemp=*pphead,*pnew=NULL;
+  if(n<0)
+  {
+    return 1;
+  }
+
+  pnew=(sll_t *)malloc(sizeof(sll_t));
+  if (pnew==NULL)
+  {
+    return 4;
+  }
+  pnew->data=data;
+  if(n==0)
+  {
+    pnew->pnext=*pphead;
+    *pphead=pnew;
+    return 0;
+  }
+  while(--n)
+  {
+    ptemp=ptemp->pnext;
+    if(ptemp==NULL)
+    {
+      free(pnew);
+      return 2;
+    }
+  }
+  pnew->pnext=ptemp->pnext;
+  ptemp->pnext=pnew;
+  return 0;
+}
+```
+### 04. Delete a Node(using key) Single Linked list 
+```c
+int4_t delete(sll_t **pphead,int4_t key)
+{
+  sll_t *ptemp=*pphead,*pprev;
+  if(*pphead==NULL)
+  {
+    return 1;
+  }
+  else
+  {
+    while(ptemp!=NULL)
+    {
+      if (ptemp->data==key)
+      {
+        if (ptemp==*pphead)
+        {
+          *pphead=ptemp->pnext;
+        }
+        else
+        {
+            pprev->pnext=ptemp->pnext;
+        }
+        free(ptemp);
+        return 0;
+      }
+      else
+        {
+          pprev=ptemp;
+          ptemp=ptemp->pnext;
+        }
+    }
+    return 2;
+  }
+}
+```
 ### Single Linked list Full Program 
 ```c
 #include<stdio.h>
