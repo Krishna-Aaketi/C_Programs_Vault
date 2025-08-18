@@ -1,4 +1,18 @@
-
+### Add at Beginning Single Linked list 
+```c
+int4_t add_at_begining(sll_t **pphead,int4_t data)
+{
+  sll_t *pnew=NULL;
+  pnew=(sll_t *)malloc(sizeof(sll_t));
+  if (pnew==NULL)
+  {
+    return 1;
+  }
+  pnew->data=data;
+  pnew->pnext=*pphead;
+  *pphead=pnew;
+}
+```
 ### Single Linked list Full Program 
 ```c
 #include<stdio.h>
