@@ -61,6 +61,6 @@ int main(){
 					printf("%d is the fixed status count \n",sta(b,stat));
 				break;
 		}
-```
 	}while(choice!=3);
 }
+```
