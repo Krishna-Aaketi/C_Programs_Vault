@@ -462,7 +462,7 @@ int main(void)
   char str[100];
   printf("Enter a string: ");
   scanf("%s", str);  // reads without spaces
-  reverseRecursive(str, str + strlen(str) - 1);
+  reverse_Recursive(str, str + strlen(str) - 1);
   printf("Reversed string: %s\n", str);
   return 0;
 }
@@ -483,7 +483,8 @@ void reverse_Recursive(char *start, char *end)
 ```
 ### Output
 ```c
-
+Enter a string: krishna
+Reversed string: anhsirk
 ```
 ### 13. Sum of digit in the given strings
 ```c
