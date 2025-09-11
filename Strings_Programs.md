@@ -1826,10 +1826,11 @@ Given string is not a characters are Unique
 ```
 ### 42. Find Compress a string (Run-length Encoding) 
 ```c
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * 42. Write a c program to find Compress a string (Run-length Encoding) *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
+#if 0
 #include <stdio.h>
 #include <string.h>
 
@@ -1853,6 +1854,36 @@ int main(void)
   printf("\n");
   return 0;
 }
+#endif
+
+#if 1
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+  char str[50];
+  int arr[256] = {0};
+  int i;
+  printf("Enter string (<50): ");
+  scanf("%s", str);
+  for (i = 0;str[i] != '\0';i++)
+  {
+    arr[(unsigned char)str[i]]++;
+  }
+  for (i = 0; str[i] != '\0'; i++)
+  {
+    if(arr[(unsigned char)str[i]] != 0)
+    {
+      printf("%c%d", str[i],arr[(unsigned char)str[i]]);
+      arr[(unsigned char)str[i]] = 0;
+    }
+  }
+  printf("\n");
+  return 0;
+}
+
+#endif
 ```
 ### Output
 ```c
