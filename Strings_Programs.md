@@ -1508,8 +1508,8 @@ int main(void)
 ### Output
 ```c
 Enter string 1:krishna
-Enter string 2:hema
-krisn
+Enter string 2:aaketi
+rshn
 ```
 ### 35. check given string2 is rotation of string1
 ```c
