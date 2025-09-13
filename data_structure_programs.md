@@ -97,6 +97,42 @@ int4_t delete(sll_t **pphead,int4_t key)
   }
 }
 ```
+### 18. Delete kth Node from last node
+```c
+void0_t delete_kth_node_from_last(sll_t **pphead,int4_t k)
+{
+  sll_t *ptrav_1=*pphead,*ptrav_2=*pphead,*pprev=NULL;
+  if(ptrav_1 == NULL || ptrav_1->pnext ==NULL || k<0)
+  {
+    return ;
+  }
+  while(k--)
+  {
+    if(ptrav_1 == NULL)
+    {
+      return ;
+    }
+    ptrav_1=ptrav_1->pnext;
+  }
+  while(ptrav_1->pnext != NULL)
+  {
+    pprev=ptrav_2;
+    ptrav_2=ptrav_2->pnext;
+    ptrav_1=ptrav_1->pnext;
+  }
+  if(ptrav_2 == *pphead)
+  {
+    *pphead=ptrav_2->pnext;
+  }
+  else
+  {
+    pprev->pnext=ptrav_2->pnext;
+  }
+  free(ptrav_2);
+  return ;
+}
+```
+
 ### Single Linked list Full Program 
 ```c
 #include<stdio.h>
@@ -128,6 +164,7 @@ sll_t *last_but_nth_node(sll_t *pHead,int4_t n);
 sll_t *one_third_node(sll_t *pHead);
 sll_t *x_by_yth_node(sll_t *pHeadi,int4_t x,int4_t y);
 int4_t remove_dups_in_sorted_list(sll_t *pHead);
+void0_t delete_kth_node_from_last(sll_t **pphead,int4_t k);
 
 int4_t main(void0_t)
 {
@@ -344,7 +381,11 @@ int4_t main(void0_t)
            printf("loop found at node %p and data=%d.loop is successfully removed.\n",pfound,pfound->data);
          }
          break;
-
+       case 18:
+         printf("Enter kTh Element\n");
+         scanf("%d",&k);
+         delete_kth_node_from_last(&phead,k);
+         break;
       default:
          printf("Enter Correct Options\n");
     }
@@ -805,5 +846,37 @@ int4_t addN(sll_t **pphead,int4_t n,int4_t data)
   ptemp->pnext=pnew;
   return 0;
 }
-                                                                                                                                                                   
+
+void0_t delete_kth_node_from_last(sll_t **pphead,int4_t k)
+{
+  sll_t *ptrav_1=*pphead,*ptrav_2=*pphead,*pprev=NULL;
+  if(ptrav_1 == NULL || ptrav_1->pnext ==NULL || k<0)
+  {
+    return ;
+  }
+  while(k--)
+  {
+    if(ptrav_1 == NULL)
+    {
+      return ;
+    }
+    ptrav_1=ptrav_1->pnext;
+  }
+  while(ptrav_1->pnext != NULL)
+  {
+    pprev=ptrav_2;
+    ptrav_2=ptrav_2->pnext;
+    ptrav_1=ptrav_1->pnext;
+  }
+  if(ptrav_2 == *pphead)
+  {
+    *pphead=ptrav_2->pnext;
+  }
+  else
+  {
+    pprev->pnext=ptrav_2->pnext;
+  }
+  free(ptrav_2);
+  return ;
+}                                                                                                                                                                   
 ```
